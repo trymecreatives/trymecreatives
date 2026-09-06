@@ -1,0 +1,286 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #000;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.lockscreen-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: stretch;
+
+    width: 100%;
+    max-width: none;
+    height: 136px;
+
+    margin: 0;
+
+    border: 2px solid #b97857;
+    background: white;
+
+    overflow: hidden;
+}
+
+/* LEFT SIDE */
+
+.header-left {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 10px;
+}
+
+.header-left h1 {
+    margin: 3px 0 0;
+
+    color: #000;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.header-left p {
+    margin: 3px 0 0;
+
+    color: #b97857;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+/* DIAGONAL DIVIDER */
+
+.lockscreen-header::after {
+    content: "";
+
+    position: absolute;
+
+    left: 70%;
+    top: -15px;
+
+    width: 4px;
+    height: 165px;
+
+    background: #b97857;
+
+    transform: rotate(23deg);
+    transform-origin: center;
+}
+
+/* RIGHT SIDE */
+
+.header-right {
+    width: 30%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: #000;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.25;
+
+    padding-left: 10px;
+}
+
+.header-right strong {
+    font-size: 20px;
+    margin-top: 2px;
+}
+
+.header-right a {
+    margin-top: 5px;
+
+    color: #b946b8;
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.lockscreen-header h1 {
+    margin: 0;
+    font-size: 32px;
+    letter-spacing: 3px;
+    font-weight: 800;
+}
+
+.lockscreen-header p {
+    margin: 8px 0 0;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.lockscreen-page {
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+    padding: 60px 25px;
+}
+
+.lockscreen-page h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 45px;
+    letter-spacing: 3px;
+}
+
+.lockscreen-page > p {
+    text-align: center;
+    color: #999;
+    margin: 12px 0 50px;
+}
+
+/* 2 LOCKSCREENS PER ROW */
+.lockscreen-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+}
+
+/* KEEP THE REAL 1080 × 2400 PROPORTION */
+.lockscreen-item {
+    width: 100%;
+    aspect-ratio: 1080 / 2400;
+    overflow: hidden;
+}
+
+.lockscreen-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.screensaver-grid {
+    display: grid;
+
+    /* ALWAYS 8 COLUMNS */
+    grid-template-columns: repeat(8, 1fr);
+
+    /* ALWAYS 4 ROWS */
+    grid-template-rows: repeat(4, auto);
+
+    gap: 15px;
+}
+
+.screensaver-item {
+    width: 100%;
+    aspect-ratio: 1920 / 1080;
+    overflow: hidden;
+}
+
+.screensaver-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* PHONE */
+@media (max-width: 600px) {
+
+    .lockscreen-page {
+        padding: 40px 12px;
+    }
+      
+    .lockscreen-header {
+        width: 100%;
+        height: 105px;
+
+        border-width: 3px;
+    }
+
+    .header-left {
+        width: 70%;
+        padding: 5px;
+    }
+
+  .header-left h1 {
+        font-size: clamp(18px, 6vw, 26px);
+        letter-spacing: 0;
+    }
+
+    .header-left p {
+        font-size: 11px;
+        margin-top: 3px;
+    }
+
+  .header-right {
+        width: 30%;
+        padding: 3px;
+
+        font-size: 11px;
+        line-height: 1.2;
+    }
+
+     .header-right strong {
+        font-size: 15px;
+    }
+
+    .header-right a {
+        font-size: 9px;
+        margin-top: 3px;
+        white-space: nowrap;
+    }
+
+      .lockscreen-header::after {
+        left: 70%;
+        top: -15px;
+
+        width: 3px;
+        height: 135px;
+
+        transform: rotate(23deg);
+    }
+
+    .lockscreen-header h1 {
+        letter-spacing: 1.5px;
+    }
+
+    .lockscreen-header p {
+        margin-top: 6px;
+    }
+
+    .lockscreen-page h1 {
+        font-size: 28px;
+    }
+
+    .lockscreen-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+.lockscreen-item {
+    width: 100%;
+    aspect-ratio: 1080 / 2400;
+    overflow: hidden;
+}
+.lockscreen-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+}
+
