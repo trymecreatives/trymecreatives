@@ -93,7 +93,7 @@ body {
 
     grid-template-columns: 1fr 1fr 1fr;
 
-    grid-template-rows: 250px 250px;
+    grid-template-rows: auto auto;
 
     gap: 20px;
 }
@@ -136,6 +136,7 @@ body {
 .lockscreen {
     grid-column: 1;
     grid-row: 1 / 3;
+     
 }
 
 
@@ -144,6 +145,7 @@ body {
 .large-wallpaper {
     grid-column: 2 / 4;
     grid-row: 1;
+    aspect-ratio: 1920 / 1080;
 }
 
 
@@ -152,6 +154,7 @@ body {
 .album-cover {
     grid-column: 2;
     grid-row: 2;
+     aspect-ratio: 1 / 1;
 }
 
 
@@ -160,6 +163,13 @@ body {
 .laptop {
     grid-column: 3;
     grid-row: 2;
+    height: 100%;
+}
+
+.laptop img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 
@@ -169,6 +179,13 @@ body {
     transform: translateY(-5px);
 
     border-color: white;
+}
+.gallery-item:hover .explore {
+    gap: 12px;
+}
+
+.gallery-item:hover .arrow {
+    transform: translateX(5px);
 }
 
 .gallery-item:hover img {
@@ -217,23 +234,54 @@ body {
 
 /* Text stays above the image */
 
-.gallery-item span {
+.gallery-text {
     position: relative;
-
     z-index: 2;
 
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.gallery-text span {
     color: white;
 
-    font-size: clamp(16px, 2vw, 24px);
+    font-size: clamp(17px, 2vw, 25px);
     font-weight: 800;
 
     letter-spacing: 1px;
 
-    text-align: center;
-
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
 
-    padding: 15px;
+.gallery-text small.explore {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #c9a227;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    transition: gap 0.3s ease;
+}
+
+.gallery-text .arrow {
+    display: inline-block;
+
+    font-size: 20px;
+    line-height: 10px;
+
+    color: #c9a227;
+
+    transition: transform 0.3s ease;
 }
 
 @media (max-width: 700px) {
