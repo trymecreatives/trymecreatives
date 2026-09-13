@@ -1,119 +1,448 @@
-<!DOCTYPE html>
-<html lang="en">
+body {
+    margin: 0;
+    background: rgb(182, 197, 219);
+    color: white;
+}
 
-<head>
-    <meta charset="UTF-8">
+/* =========================
+   HEADER
+   ========================= */
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
-    <title>Tryme Creatives</title>
+    width: 100%;
+    
 
-    <link rel="stylesheet" href="TRYME.css">
-</head>
-
-<body>
-
-    <header class="site-header">
-
-    <div class="header-content">
-
-        <!-- Round logo -->
-        <img 
-            class="logo"
-            src="Trymecreative profile.png"
-            alt="Tryme Creatives Logo"
-        >
-
-        <!-- Text -->
-        <span class="site-name">TRYME CREATIVES</span>
-
-    </div>
-
-    <!-- Advertisement spaces -->
-    <div class="advertising">
-
-        <div class="advert-box">
-            BOOK THIS SPACE TO ADVERTISE
-        </div>
-
-        <div class="advert-box">
-           Support Till. 3244341
-        </div>
-
-        <div class="advert-box">
-            ADVERTISE ON THIS SPACE
-        </div>
-
-    </div>
-
-</header>
+    background: rgb(85, 92, 102);
+}
 
 
-    <section class="gallery">
+/* =========================
+   LOGO + TEXT
+   ========================= */
 
-    <h2>YOZIKRAZY STORE</h2>
+.header-content {
+    width: 100%;
+    max-width: none;
 
-<p class="gallery-subtitle">
-    Choose a category to explore
-</p>
+    height: 80px;
 
-    <div class="gallery-grid">
+    margin: 0 auto;
 
-        <!-- Phone Lock Screen -->
-        <a href="lockscreen.html" class="gallery-item lockscreen">
-            <img src="chinja jogoo phone screen saver-01.png" alt="Phone Lock Screen">
-            <div class="gallery-text">
-    <span>PHONE LOCKSCREEN</span>
-    <small class="explore">
-    CLICK TO EXPLORE
-    <span class="arrow">→</span>
-</small>
-            </div>
-        </a>
+    background: rgb(85, 92, 102);
 
+    border: 0.2px solid #111;
+    box-sizing: border-box;
 
-        <!-- Large Wallpaper -->
-        <a href="wallpapers.html" class="gallery-item large-wallpaper">
-            <img src="Yozi Pic3.png" alt="Large Wallpaper">
-            <div class="gallery-text">
-    <span>LARGE WALLPAPER</span>
-    <small class="explore">
-    CLICK TO EXPLORE
-    <span class="arrow">→</span>
-    </small>
-        </div>
-        </a>
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+}
 
 
-        <!-- Album Cover -->
-        <a href="album-covers.html" class="gallery-item album-cover">
-            <img src="Body.png" alt="Album Cover">
-            <div class="gallery-text">
-    <span>ALBUM COVER</span>
-    <small class="explore">
-    CLICK TO EXPLORE
-    <span class="arrow">→</span>
-    </small>
-        </div>
-        </a>
+/* ROUND LOGO */
+
+.site-header .logo {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+}
 
 
-        <!-- Laptop Screensaver -->
-        <a href="laptop.html" class="gallery-item laptop">
-            <img src="Picasso.png" alt="Laptop Screensaver">
-            <div class="gallery-text">
-    <span>LAPTOP SCREENSAVER</span>
-    <small class="explore">
-    CLICK TO EXPLORE
-    <span class="arrow">→</span>
-    </small>
-</div>
-        </a>
+/* TEXT */
 
-    </div>
+.site-name {
+    color: rgb(212, 220, 233);
 
-    </section>
+   font-size: clamp(5px, 5vw, 35px);
+    font-weight: 800;
 
-</body>
+    letter-spacing: 1px;
 
-</html>
+    /* 3D depth */
+    text-shadow:
+        1px 1px 0 #999,
+        2px 2px 0 #888,
+        3px 3px 0 #777,
+        4px 4px 0 #666,
+        5px 5px 0 #555,
+        6px 6px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================
+   ADVERTISEMENT SPACES
+   ========================= */
+
+.advertising {
+    width:100%;
+    max-width:none;
+
+    margin: 0px auto 0;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+
+    gap: 4px;
+}
+
+
+.advert-box {
+    height: 20px;
+
+    background: rgb(97, 85, 102);
+
+    border:0.1px solid #111;
+
+   color: rgb(212, 220, 233);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    text-align: center;
+}
+
+
+/* =========================
+   GALLERY
+   ========================= */
+
+.gallery {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 90px 30px;
+}
+
+.gallery h2 {
+    position: relative;
+
+    text-align: center;
+
+    font-size: clamp(32px, 5vw, 55px);
+    font-weight: 800;
+    letter-spacing: 3px;
+
+    margin: 0 0 65px;
+}
+
+.gallery-subtitle {
+    text-align: center;
+
+    margin-top: -45px;
+    margin-bottom: 50px;
+
+    color: #999;
+
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+/* Small line underneath GALLERY */
+.gallery h2::after {
+    content: "";
+
+    display: block;
+
+    width: 70px;
+    height: 4px;
+
+    margin: 15px auto 0;
+
+    background: #000;
+    border-radius: 10px;
+}
+
+
+/* Gallery layout */
+
+.gallery-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+
+    grid-template-rows: auto auto;
+
+    gap: 20px;
+}
+
+
+/* Every gallery box */
+
+.gallery-item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border: 2px solid #444;
+    border-radius: 14px;
+
+    background: #111;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+/* Text inside the boxes */
+
+.gallery-item span {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* Lock screen takes the full height */
+
+.lockscreen {
+    grid-column: 1;
+    grid-row: 1 / 3;
+     
+}
+
+
+/* Large wallpaper */
+
+.large-wallpaper {
+    grid-column: 2 / 4;
+    grid-row: 1;
+    aspect-ratio: 1920 / 1080;
+}
+
+
+/* Album cover */
+
+.album-cover {
+    grid-column: 2;
+    grid-row: 2;
+     aspect-ratio: 1 / 1;
+}
+
+
+/* Laptop */
+
+.laptop {
+    grid-column: 3;
+    grid-row: 2;
+    height: 100%;
+}
+
+.laptop img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Hover effect */
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+
+    border-color: white;
+}
+.gallery-item:hover .explore {
+    gap: 12px;
+}
+
+.gallery-item:hover .arrow {
+    transform: translateX(5px);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item:hover::after {
+    background: rgba(0, 0, 0, 0.30);
+}
+
+/* Gallery images */
+
+.gallery-item img {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.4s ease;
+}
+
+
+/* Dark layer over the image */
+
+.gallery-item::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    transition: background 0.3s ease;
+}
+
+
+/* Text stays above the image */
+
+.gallery-text {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.gallery-text span {
+    color: white;
+
+    font-size: clamp(17px, 2vw, 25px);
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.gallery-text small.explore {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #c9a227;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    transition: gap 0.3s ease;
+}
+
+.gallery-text .arrow {
+    display: inline-block;
+
+    font-size: 20px;
+    line-height: 10px;
+
+    color: #c9a227;
+
+    transition: transform 0.3s ease;
+}
+
+/* =========================
+   PHONE HEADER
+   ========================= */
+
+@media (max-width: 700px) {
+    .gallery {
+        padding: 60px 15px;
+    }
+
+    .gallery h2 {
+        margin-bottom: 30px;
+    }
+
+    .gallery-grid {
+        display: grid;
+
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+
+        gap: 15px;
+    }
+
+    .gallery-item {
+        min-height: 220px;
+    }
+
+    .lockscreen,
+    .large-wallpaper,
+    .album-cover,
+    .laptop {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    
+
+    .header-content {
+        width: 100%;
+
+        height: 48px;
+
+        padding: 0 12px;
+
+        box-sizing: border-box;
+
+        justify-content: flex-start;
+
+        gap: 9px;
+    }
+
+
+    .site-header .logo {
+        width: 26px;
+        height: 26px;
+    }
+
+
+    .site-name {
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+
+
+    .advertising {
+        width: 100%;
+
+        grid-template-columns: 1fr 1fr 1fr;
+
+        gap: 3px;
+    }
+
+
+    .advert-box {
+        height: 18px;
+
+        font-size: 6px;
+    }
+
+}
+
+}
