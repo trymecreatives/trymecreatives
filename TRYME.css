@@ -1,7 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
 body {
     margin: 0;
+    padding: 0;
+    width: 100;
     background: rgb(182, 197, 219);
     color: white;
+    
 }
 
 /* =========================
@@ -12,9 +20,11 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+    padding: 0;
+
 
     width: 100%;
-    
+    margin: o;
 
     background: rgb(85, 92, 102);
 }
@@ -34,7 +44,7 @@ body {
 
     background: rgb(85, 92, 102);
 
-    border: 0.2px solid #111;
+    border: 0px solid #111;
     box-sizing: border-box;
 
     display: flex;
@@ -101,7 +111,7 @@ body {
 
     background: rgb(97, 85, 102);
 
-    border:0.1px solid #111;
+    border:0px solid #111;
 
    color: rgb(212, 220, 233);
 
@@ -378,6 +388,11 @@ body {
         margin-bottom: 30px;
     }
 
+    .gallery-subtitle {
+        margin-top: 0;
+        margin-bottom: 50px;
+    }
+
     .gallery-grid {
         display: grid;
 
@@ -390,6 +405,8 @@ body {
     .gallery-item {
         min-height: 220px;
     }
+
+    
 
     .lockscreen,
     .large-wallpaper,
@@ -407,6 +424,7 @@ body {
         height: 48px;
 
         padding: 0 12px;
+        margin: 0;
 
         box-sizing: border-box;
 
@@ -445,4 +463,3 @@ body {
 
 }
 
-}
