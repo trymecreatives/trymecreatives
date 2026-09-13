@@ -1,318 +1,119 @@
-body {
-    margin: 0;
-    background: rgb(182, 197, 219);
-    color: white;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-.banner {
-    position: relative;
-    width: 100%;
-}
+<head>
+    <meta charset="UTF-8">
 
-.banner > img:first-child {
-    width: 100%;
-    height: auto;
-    display: block;
-}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-.logo {
-    position: absolute;
+    <title>Tryme Creatives</title>
 
-    /* Put logo in the center */
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    <link rel="stylesheet" href="TRYME.css">
+</head>
 
-    /* Logo size */
-    width: 150px;
-    height: 150px;
+<body>
 
-    /* Make it round */
-    border-radius: 50%;
+    <header class="site-header">
 
-    /* Prevent distortion */
-    object-fit: cover;
-}
+    <div class="header-content">
 
+        <!-- Round logo -->
+        <img 
+            class="logo"
+            src="Trymecreative profile.png"
+            alt="Tryme Creatives Logo"
+        >
 
-/* =========================
-   GALLERY
-   ========================= */
+        <!-- Text -->
+        <span class="site-name">TRYME CREATIVES</span>
 
-.gallery {
-    width: 100%;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 90px 30px;
-}
+    </div>
 
-.gallery h2 {
-    position: relative;
+    <!-- Advertisement spaces -->
+    <div class="advertising">
 
-    text-align: center;
+        <div class="advert-box">
+            BOOK THIS SPACE TO ADVERTISE
+        </div>
 
-    font-size: clamp(32px, 5vw, 55px);
-    font-weight: 800;
-    letter-spacing: 3px;
+        <div class="advert-box">
+           Support Till. 3244341
+        </div>
 
-    margin: 0 0 65px;
-}
+        <div class="advert-box">
+            ADVERTISE ON THIS SPACE
+        </div>
 
-.gallery-subtitle {
-    text-align: center;
+    </div>
 
-    margin-top: -45px;
-    margin-bottom: 50px;
+</header>
 
-    color: #999;
 
-    font-size: 16px;
-    letter-spacing: 0.5px;
-}
+    <section class="gallery">
 
-/* Small line underneath GALLERY */
-.gallery h2::after {
-    content: "";
+    <h2>YOZIKRAZY STORE</h2>
 
-    display: block;
+<p class="gallery-subtitle">
+    Choose a category to explore
+</p>
 
-    width: 70px;
-    height: 4px;
+    <div class="gallery-grid">
 
-    margin: 15px auto 0;
+        <!-- Phone Lock Screen -->
+        <a href="lockscreen.html" class="gallery-item lockscreen">
+            <img src="chinja jogoo phone screen saver-01.png" alt="Phone Lock Screen">
+            <div class="gallery-text">
+    <span>PHONE LOCKSCREEN</span>
+    <small class="explore">
+    CLICK TO EXPLORE
+    <span class="arrow">→</span>
+</small>
+            </div>
+        </a>
 
-    background: #000;
-    border-radius: 10px;
-}
 
+        <!-- Large Wallpaper -->
+        <a href="wallpapers.html" class="gallery-item large-wallpaper">
+            <img src="Yozi Pic3.png" alt="Large Wallpaper">
+            <div class="gallery-text">
+    <span>LARGE WALLPAPER</span>
+    <small class="explore">
+    CLICK TO EXPLORE
+    <span class="arrow">→</span>
+    </small>
+        </div>
+        </a>
 
-/* Gallery layout */
 
-.gallery-grid {
-    display: grid;
+        <!-- Album Cover -->
+        <a href="album-covers.html" class="gallery-item album-cover">
+            <img src="Body.png" alt="Album Cover">
+            <div class="gallery-text">
+    <span>ALBUM COVER</span>
+    <small class="explore">
+    CLICK TO EXPLORE
+    <span class="arrow">→</span>
+    </small>
+        </div>
+        </a>
 
-    grid-template-columns: 1fr 1fr 1fr;
 
-    grid-template-rows: auto auto;
-
-    gap: 20px;
-}
-
-
-/* Every gallery box */
-
-.gallery-item {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
-
-    border: 2px solid #444;
-    border-radius: 14px;
-
-    background: #111;
-
-    text-decoration: none;
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease;
-}
-
-/* Text inside the boxes */
-
-.gallery-item span {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-}
-
-
-/* Lock screen takes the full height */
-
-.lockscreen {
-    grid-column: 1;
-    grid-row: 1 / 3;
-     
-}
-
-
-/* Large wallpaper */
-
-.large-wallpaper {
-    grid-column: 2 / 4;
-    grid-row: 1;
-    aspect-ratio: 1920 / 1080;
-}
-
-
-/* Album cover */
-
-.album-cover {
-    grid-column: 2;
-    grid-row: 2;
-     aspect-ratio: 1 / 1;
-}
-
-
-/* Laptop */
-
-.laptop {
-    grid-column: 3;
-    grid-row: 2;
-    height: 100%;
-}
-
-.laptop img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-
-/* Hover effect */
-
-.gallery-item:hover {
-    transform: translateY(-5px);
-
-    border-color: white;
-}
-.gallery-item:hover .explore {
-    gap: 12px;
-}
-
-.gallery-item:hover .arrow {
-    transform: translateX(5px);
-}
-
-.gallery-item:hover img {
-    transform: scale(1.05);
-}
-
-.gallery-item:hover::after {
-    background: rgba(0, 0, 0, 0.30);
-}
-
-/* Gallery images */
-
-.gallery-item img {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    transition: transform 0.4s ease;
-}
-
-
-/* Dark layer over the image */
-
-.gallery-item::after {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background: rgba(0, 0, 0, 0.45);
-
-    transition: background 0.3s ease;
-}
-
-
-/* Text stays above the image */
-
-.gallery-text {
-    position: relative;
-    z-index: 2;
-
-    text-align: center;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: 10px;
-}
-
-.gallery-text span {
-    color: white;
-
-    font-size: clamp(17px, 2vw, 25px);
-    font-weight: 800;
-
-    letter-spacing: 1px;
-
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-}
-
-.gallery-text small.explore {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    color: #c9a227;
-
-    font-size: 11px;
-    font-weight: 800;
-
-    letter-spacing: 1.5px;
-
-    transition: gap 0.3s ease;
-}
-
-.gallery-text .arrow {
-    display: inline-block;
-
-    font-size: 20px;
-    line-height: 10px;
-
-    color: #c9a227;
-
-    transition: transform 0.3s ease;
-}
-
-@media (max-width: 700px) {
-
-    .gallery {
-        padding: 60px 15px;
-    }
-
-    .gallery h2 {
-        margin-bottom: 30px;
-    }
-
-    .gallery-grid {
-        display: grid;
-
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-
-        gap: 15px;
-    }
-
-    .gallery-item {
-        min-height: 220px;
-    }
-
-    .lockscreen,
-    .large-wallpaper,
-    .album-cover,
-    .laptop {
-        grid-column: auto;
-        grid-row: auto;
-    }
-
-}
+        <!-- Laptop Screensaver -->
+        <a href="laptop.html" class="gallery-item laptop">
+            <img src="Picasso.png" alt="Laptop Screensaver">
+            <div class="gallery-text">
+    <span>LAPTOP SCREENSAVER</span>
+    <small class="explore">
+    CLICK TO EXPLORE
+    <span class="arrow">→</span>
+    </small>
+</div>
+        </a>
+
+    </div>
+
+    </section>
+
+</body>
+
+</html>
