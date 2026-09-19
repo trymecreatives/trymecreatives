@@ -100,12 +100,12 @@ body {
     width: 100%;
     max-width: 1300px;
     margin: 0 auto;
-    padding: 20px 30px 55px;
+    padding: 8px 30px 55px;
 }
 
 .gallery > h2,
 .people-section h2 {
-    margin: 0 0 12px;
+    margin: 0 0 4px;
     color: #000;
     font-size: clamp(16px, 2vw, 24px);
     font-weight: 800;
@@ -118,13 +118,13 @@ body {
     display: block;
     width: 65px;
     height: 4px;
-    margin: 12px 0 0;
+    margin: 5px 0 0;
     background: #000;
     border-radius: 10px;
 }
 
 .gallery-subtitle {
-    margin: 0 0 30px;
+    margin: 0 0 15px;
     color: #555;
     font-size: 16px;
     letter-spacing: 0.5px;
@@ -259,13 +259,13 @@ body {
 /* PEOPLE */
 
 .people-section {
-    margin-top: 35px;
-    padding-top: 30px;
+    margin-top: 15px;
+    padding-top: 15px;
     border-top: 2px solid rgba(255, 255, 255, 0.25);
 }
 
 .people-section h2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .people-grid {
@@ -333,7 +333,7 @@ body {
     }
 
     .gallery {
-        padding: 18px 8px 35px;
+        padding: 8px 8px 35px;
     }
 
     .gallery > h2 {
@@ -341,7 +341,7 @@ body {
     }
 
     .gallery-subtitle {
-        margin-bottom: 20px;
+        margin-bottom: 12px;
         font-size: 11px;
     }
 
@@ -388,12 +388,12 @@ body {
     }
 
     .people-section {
-        margin-top: 25px;
-        padding-top: 20px;
+        margin-top: 12px;
+        padding-top: 12px;
     }
 
     .people-section h2 {
-        margin-bottom: 12px;
+        margin-bottom: 8px;
     }
 
     .people-grid {
