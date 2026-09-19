@@ -12,11 +12,8 @@ body {
     color: white;
 }
 
-/* =========================
-   HEADER
-   ========================= */
+/* HEADER */
 
-/* Stays visible while the stores scroll beneath it */
 .site-header {
     position: sticky;
     top: 0;
@@ -25,12 +22,6 @@ body {
     margin: 0;
     background: rgb(85, 92, 102);
 }
-
-
-
-/* =========================
-   LOGO + TEXT
-   ========================= */
 
 .header-content {
     display: flex;
@@ -43,17 +34,14 @@ body {
     background: rgb(85, 92, 102);
 }
 
-
-/* ROUND LOGO */
-
 .site-header .logo {
     width: 45px;
     height: 45px;
     flex: 0 0 auto;
+    border: 2px solid #f4f4f4;
     border-radius: 50%;
     object-fit: cover;
-
-     /* 3D appearance */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow:
         0 2px 0 #777,
         0 5px 0 #444,
@@ -67,8 +55,6 @@ body {
         0 8px 0 #444,
         0 12px 16px rgba(0, 0, 0, 0.45);
 }
-
-/* TEXT */
 
 .site-name {
     color: rgb(212, 220, 233);
@@ -84,10 +70,7 @@ body {
         6px 6px 8px rgba(0, 0, 0, 0.5);
 }
 
-
-/* =========================
-   ADVERTISEMENT SPACES
-   ========================= */
+/* ADVERTISING */
 
 .advertising {
     display: grid;
@@ -96,7 +79,6 @@ body {
     width: 100%;
     margin: 0;
 }
-
 
 .advert-box {
     display: flex;
@@ -112,10 +94,7 @@ body {
     text-align: center;
 }
 
-
-/* =========================
-   GALLERY
-   ========================= */
+/* PAGE */
 
 .gallery {
     width: 100%;
@@ -124,31 +103,16 @@ body {
     padding: 20px 30px 55px;
 }
 
-.gallery h2 {
-    position: relative;
-color: #504d4d;
-    text-align: left;
-
+.gallery > h2,
+.people-section h2 {
+    margin: 0 0 12px;
+    color: #000;
     font-size: clamp(16px, 2vw, 24px);
     font-weight: 800;
     letter-spacing: 2px;
-
-    margin: 0 0 35px;
+    text-align: left;
 }
 
-.gallery-subtitle {
-    text-align: center;
-
-    margin-top: -45px;
-    margin-bottom: 50px;
-
-    color: #999;
-
-    font-size: 16px;
-    letter-spacing: 0.5px;
-}
-
-/* Small line underneath GALLERY */
 .gallery > h2::after {
     content: "";
     display: block;
@@ -159,30 +123,26 @@ color: #504d4d;
     border-radius: 10px;
 }
 
+.gallery-subtitle {
+    margin: 0 0 30px;
+    color: #555;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
 
-/* Gallery layout */
+/* THREE STORES */
 
-.gallery-grid {
+.stores-row {
     display: grid;
-
-    grid-template-columns: 1fr 1fr 1fr;
-
-    grid-template-rows: auto auto;
-
-    gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    align-items: start;
 }
 
-/* Three stores side by side on PC */
 .store-group {
-    display: inline-block;
-    vertical-align: top;
-    width: calc((100% - 64px) / 3);
-    margin-right: 25px;
-    margin-bottom: 35px;
-}
-
-.store-group:nth-of-type(3) {
-    margin-right: 0;
+    min-width: 0;
+    margin: 0;
 }
 
 .store-group h3 {
@@ -190,131 +150,94 @@ color: #504d4d;
     color: white;
     font-size: clamp(14px, 1.6vw, 21px);
     font-weight: 800;
-    text-align: center;
     letter-spacing: 1px;
+    text-align: center;
 }
 
-/* Four smaller categories inside every store */
 .store-items {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
 }
 
-/* Small category cards */
 .store-items .gallery-item {
     min-height: 130px;
     aspect-ratio: 1 / 1;
 }
 
-/* Make the labels fit inside compact cards */
-.store-items .gallery-text {
-    gap: 5px;
-    padding: 8px;
-}
-
-.store-items .gallery-text span {
-    font-size: clamp(10px, 1.2vw, 15px);
-    letter-spacing: 0.5px;
-}
-.store-items .gallery-text small.explore {
-    gap: 4px;
-    font-size: clamp(6px, 0.8vw, 9px);
-    letter-spacing: 0.6px;
-}
-
-.store-items .gallery-text .arrow {
-    font-size: 14px;
-}
-
-/* Every gallery box */
+/* STORE CARDS */
 
 .gallery-item {
     position: relative;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     overflow: hidden;
-
     border: 2px solid #444;
     border-radius: 14px;
-
     background: #111;
-
+    color: white;
     text-decoration: none;
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-/* Text inside the boxes */
-
-.gallery-item span {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-}
-
-
-
-/* Lock screen takes the full height */
-
-.lockscreen {
-    grid-column: 1;
-    grid-row: 1 / 3;
-     
-}
-
-
-/* Large wallpaper */
-
-.large-wallpaper {
-    grid-column: 2 / 4;
-    grid-row: 1;
-    aspect-ratio: 1920 / 1080;
-}
-
-
-/* Album cover */
-
-.album-cover {
-    grid-column: 2;
-    grid-row: 2;
-     aspect-ratio: 1 / 1;
-}
-
-
-/* Laptop */
-
-.laptop {
-    grid-column: 3;
-    grid-row: 2;
-    height: 100%;
-}
-
-.laptop img {
+.gallery-item img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease;
 }
 
+.gallery-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    transition: background 0.3s ease;
+}
 
-/* Hover effect */
+.gallery-text {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 8px;
+    text-align: center;
+}
+
+.gallery-text span {
+    color: white;
+    font-size: clamp(10px, 1.2vw, 15px);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.gallery-text small.explore {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #c9a227;
+    font-size: clamp(6px, 0.8vw, 9px);
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    transition: gap 0.3s ease;
+}
+
+.gallery-text .arrow {
+    display: inline-block;
+    color: #c9a227;
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
 
 .gallery-item:hover {
     transform: translateY(-5px);
-
     border-color: white;
-}
-.gallery-item:hover .explore {
-    gap: 12px;
-}
-
-.gallery-item:hover .arrow {
-    transform: translateX(5px);
 }
 
 .gallery-item:hover img {
@@ -322,114 +245,27 @@ color: #504d4d;
 }
 
 .gallery-item:hover::after {
-    background: rgba(0, 0, 0, 0.30);
+    background: rgba(0, 0, 0, 0.3);
 }
 
-/* Gallery images */
-
-.gallery-item img {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    transition: transform 0.4s ease;
-}
-
-
-/* Dark layer over the image */
-
-.gallery-item::after {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background: rgba(0, 0, 0, 0.45);
-
-    transition: background 0.3s ease;
-}
-
-
-/* Text stays above the image */
-
-.gallery-text {
-    position: relative;
-    z-index: 2;
-
-    text-align: center;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+.gallery-item:hover .explore {
     gap: 10px;
 }
 
-.gallery-text span {
-    color: white;
-
-    font-size: clamp(17px, 2vw, 25px);
-    font-weight: 800;
-
-    letter-spacing: 1px;
-
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+.gallery-item:hover .arrow {
+    transform: translateX(4px);
 }
 
-.gallery-text small.explore {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    color: #c9a227;
-
-    font-size: 11px;
-    font-weight: 800;
-
-    letter-spacing: 1.5px;
-
-    transition: gap 0.3s ease;
-}
-
-.gallery-text .arrow {
-    display: inline-block;
-
-    font-size: 20px;
-    line-height: 10px;
-
-    color: #c9a227;
-
-    transition: transform 0.3s ease;
-}
-
-/* =========================
-   PEOPLE I MAY KNOW
-   ========================= */
+/* PEOPLE */
 
 .people-section {
-    margin-top: 25px;
+    margin-top: 35px;
     padding-top: 30px;
     border-top: 2px solid rgba(255, 255, 255, 0.25);
 }
 
 .people-section h2 {
-    margin: 0 0 20px;
-    color: #000;
-    text-align: left;
-    font-size: clamp(16px, 2vw, 24px);
-    font-weight: 800;
-    letter-spacing: 2px;
+    margin-bottom: 20px;
 }
 
 .people-grid {
@@ -456,9 +292,9 @@ color: #504d4d;
     display: block;
     width: 100%;
     aspect-ratio: 3 / 4;
-    object-fit: cover;
     border: 2px solid #111;
     background: #555;
+    object-fit: cover;
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
@@ -467,137 +303,104 @@ color: #504d4d;
     border-color: white;
 }
 
-/* =========================
-   PHONE HEADER
-   ========================= */
+/* PHONE */
 
 @media (max-width: 700px) {
-    .gallery {
-        padding: 40px 15px;
+    .header-content {
+        height: 48px;
+        padding: 0 12px;
+        gap: 9px;
     }
 
-    .gallery h2 {
-        margin-bottom: 25px;
+    .site-header .logo {
+        width: 26px;
+        height: 26px;
     }
-
-    /* Keep the same three-store PC layout on phone */
-.stores-row {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
-}
-
-    
-
-     /* One store below another on phone */
-    .store-group {
-        
-        width: auto;
-        margin: 0;
-    }
-
-     .store-group h3 {
-     min-height: 28px;
-     margin-bottom: 6px;
-     font-size: 9px;
-     line-height: 1.1;
-    }
-
-    .store-items {
-    gap: 4px;
-}
-
-    .store-items .gallery-item {
-    min-height: 0;
-    aspect-ratio: 1 / 1;
-}
-    
-.store-items .gallery-text {
-    gap: 2px;
-    padding: 3px;
-}
-
-    .store-items .gallery-text span {
-    font-size: 4px;
-    letter-spacing: 0;
-}
-
-    .store-items .gallery-text small.explore {
-        font-size: 7px;
-    }
-
-    .gallery-subtitle {
-        margin-top: 0;
-        margin-bottom: 50px;
-    }
-
-    .gallery-grid {
-        display: grid;
-
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-
-        gap: 15px;
-    }
-
-    .gallery-item {
-        min-height: 220px;
-    }
-
-
-    
-
-.header-content {
-    justify-content: center;
-    height: 48px;
-    padding: 0 12px;
-    gap: 9px;
-}
-
-
-  .site-header .logo {
-    width: 26px;
-    height: 26px;
-}
-
 
     .site-name {
         font-size: 12px;
         letter-spacing: 0.5px;
     }
 
-
     .advertising {
-        width: 100%;
-
-        grid-template-columns: 1fr 1fr 1fr;
-
         gap: 3px;
     }
 
-
     .advert-box {
         height: 28px;
-
+        padding: 0 4px;
         font-size: 8px;
     }
 
-    /* =========================
-   PEOPLE I MAY KNOW phone section
-   ========================= */
+    .gallery {
+        padding: 18px 8px 35px;
+    }
 
- .people-section {
-    margin-top: 10px;
-    padding-top: 25px;
+    .gallery > h2 {
+        margin-bottom: 10px;
+    }
+
+    .gallery-subtitle {
+        margin-bottom: 20px;
+        font-size: 11px;
+    }
+
+    /* Keeps all three stores on the same phone row */
+    .stores-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .store-group h3 {
+        min-height: 28px;
+        margin-bottom: 6px;
+        font-size: 9px;
+        line-height: 1.1;
+    }
+
+    .store-items {
+        gap: 4px;
+    }
+
+    .store-items .gallery-item {
+        min-height: 0;
+        aspect-ratio: 1 / 1;
+    }
+
+    .gallery-text {
+        gap: 2px;
+        padding: 3px;
+    }
+
+    .gallery-text span {
+        font-size: 6px;
+        letter-spacing: 0;
+    }
+
+    .gallery-text small.explore {
+        gap: 2px;
+        font-size: 4px;
+        letter-spacing: 0;
+    }
+
+    .gallery-text .arrow {
+        font-size: 7px;
+    }
+
+    .people-section {
+        margin-top: 25px;
+        padding-top: 20px;
+    }
+
+    .people-section h2 {
+        margin-bottom: 12px;
+    }
+
+    .people-grid {
+        gap: 10px;
+    }
+
+    .person-name {
+        font-size: 11px;
+    }
 }
-
-.people-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
-}
-
-.person-name {
-    font-size: 11px;
-}
-
-}
-
