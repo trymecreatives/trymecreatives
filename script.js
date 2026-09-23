@@ -28,3 +28,24 @@ document.querySelectorAll(".like-button").forEach(function (button) {
         }
     });
 });
+
+
+document.querySelectorAll(".person-slider").forEach(function (slider) {
+    const slides = slider.querySelector(".person-slides");
+    const previousButton = slider.querySelector(".slider-arrow-left");
+    const nextButton = slider.querySelector(".slider-arrow-right");
+
+    previousButton.addEventListener("click", function () {
+        slides.scrollBy({
+            left: -slides.clientWidth,
+            behavior: "smooth"
+        });
+    });
+
+    nextButton.addEventListener("click", function () {
+        slides.scrollBy({
+            left: slides.clientWidth,
+            behavior: "smooth"
+        });
+    });
+});
