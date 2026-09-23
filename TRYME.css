@@ -314,6 +314,36 @@ body {
     scroll-snap-align: start;
 }
 
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.65);
+    color: white;
+    font-size: 26px;
+    line-height: 26px;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.slider-arrow:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-arrow-left {
+    left: 6px;
+}
+
+.slider-arrow-right {
+    right: 6px;
+}
+
 .photo-controls {
     position: absolute;
     right: 6px;
@@ -369,8 +399,8 @@ body {
 
 .follow-links img {
     display: block;
-    width: 28px;
-    height: 28px;
+    width: 20px;
+    height: 20px;
     object-fit: contain;
     transition: transform 0.2s ease;
 }
@@ -482,6 +512,21 @@ body {
         font-size: 11px;
     }
 
+    .slider-arrow {
+    width: 16px;
+    height: 16px;
+    font-size: 15px;
+    line-height: 14px;
+}
+
+.slider-arrow-left {
+    left: 2px;
+}
+
+.slider-arrow-right {
+    right: 2px;
+}
+
     .photo-controls {
         right: 3px;
         bottom: 3px;
@@ -508,7 +553,7 @@ body {
     }
 
     .follow-links img {
-        width: 17px;
-        height: 17px;
+        width: 12px;
+        height: 12px;
     }
 }
