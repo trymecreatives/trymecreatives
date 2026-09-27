@@ -343,7 +343,9 @@ body {
 }
 
 .people-ad-text {
-    transition: opacity 3.55s ease;
+    display: inline-block;
+    white-space: nowrap;
+    transition: opacity 0.25s ease;
 }
 
 .people-ad-text.ad-changing {
@@ -707,7 +709,7 @@ body {
 
         font-size: clamp(5px, 1.6vw, 7px);
         white-space: nowrap;
-        overflow: hidden;
+        overflow: visible;
         text-overflow: clip;
     }
 
