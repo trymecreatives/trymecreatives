@@ -49,3 +49,26 @@ document.querySelectorAll(".person-slider").forEach(function (slider) {
         });
     });
 });
+
+
+const peopleAdText = document.querySelector(".people-ad-text");
+
+if (peopleAdText) {
+    const advertMessages = [
+        " ADVERTISE ON THIS SPACE ",
+        " FOR LOW PRICES ",
+        " 1 MONTH CONTRACT"
+    ];
+
+    let currentMessage = 0;
+
+    setInterval(function () {
+        peopleAdText.classList.add("ad-changing");
+
+        setTimeout(function () {
+            currentMessage = (currentMessage + 1) % advertMessages.length;
+            peopleAdText.textContent = advertMessages[currentMessage];
+            peopleAdText.classList.remove("ad-changing");
+        }, 250);
+    }, 3000);
+}
