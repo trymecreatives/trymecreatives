@@ -1,0 +1,264 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background: rgb(182, 197, 219);
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.wallpaper-header {
+    width: 100%;
+    padding: 25px 20px;
+    background: rgb(85, 92, 102);
+    text-align: center;
+}
+
+.wallpaper-header h1 {
+    margin: 0;
+    font-size: clamp(22px, 4vw, 38px);
+    letter-spacing: 2px;
+}
+
+.wallpaper-header p {
+    margin: 6px 0 0;
+    color: #c9a227;
+    font-size: clamp(12px, 2vw, 18px);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   PAGE
+   ========================================= */
+
+.wallpaper-page {
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+    padding: 25px;
+}
+
+
+/* =========================================
+   WALLPAPER GRID
+   ========================================= */
+
+.wallpaper-grid {
+    display: grid;
+
+    /* COMPUTER */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 25px;
+}
+
+
+/* =========================================
+   WALLPAPER CARD
+   ========================================= */
+
+.wallpaper-card {
+    min-width: 0;
+    background: rgb(85, 92, 102);
+    border: 2px solid #181818;
+    border-radius: 10px;
+    overflow: hidden;
+
+    box-shadow:
+        0 5px 10px rgba(0, 0, 0, 0.4);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.wallpaper-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.5),
+        0 0 8px rgba(201, 162, 39, 0.35);
+}
+
+
+/* =========================================
+   WALLPAPER IMAGE
+   ========================================= */
+
+.wallpaper-image {
+    width: 100%;
+
+    /*
+       Your original wallpaper is 1448 × 1086
+       which is approximately 4:3.
+    */
+
+    aspect-ratio: 1448 / 1086;
+
+    overflow: hidden;
+    background: #111;
+}
+
+.wallpaper-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    /*
+       IMPORTANT:
+       Keeps the entire wallpaper visible.
+    */
+    object-fit: contain;
+
+    background: #111;
+}
+
+
+/* =========================================
+   INFORMATION
+   ========================================= */
+
+.wallpaper-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 12px;
+}
+
+.wallpaper-info h2 {
+    margin: 0;
+
+    font-size: clamp(11px, 1.5vw, 17px);
+    color: white;
+}
+
+
+/* =========================================
+   DOWNLOAD BUTTON
+   ========================================= */
+
+.wallpaper-info button {
+    border: 0;
+    border-radius: 5px;
+
+    padding: 8px 12px;
+
+    background: #c9a227;
+    color: #111;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.wallpaper-info button:hover {
+    background: #e0bd3d;
+    transform: scale(1.05);
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .wallpaper-page {
+        padding: 15px;
+    }
+
+    .wallpaper-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+}
+
+
+/* =========================================
+   PHONE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .wallpaper-page {
+        padding: 8px;
+    }
+
+    .wallpaper-grid {
+        /*
+           Two wallpapers across on phone.
+        */
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 8px;
+    }
+
+    .wallpaper-card {
+        border-width: 1px;
+        border-radius: 7px;
+    }
+
+    .wallpaper-info {
+        padding: 7px;
+        gap: 5px;
+    }
+
+    .wallpaper-info h2 {
+        font-size: 8px;
+    }
+
+    .wallpaper-info button {
+        padding: 5px 7px;
+        font-size: 7px;
+    }
+}
+
+
+/* =========================================
+   VERY SMALL PHONE
+   ========================================= */
+
+@media (max-width: 380px) {
+
+    .wallpaper-page {
+        padding: 5px;
+    }
+
+    .wallpaper-grid {
+        gap: 5px;
+    }
+
+    .wallpaper-info {
+        padding: 5px;
+    }
+
+    .wallpaper-info button {
+        padding: 4px 5px;
+        font-size: 6px;
+    }
+}
