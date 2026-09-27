@@ -12,7 +12,9 @@ body {
     color: white;
 }
 
-/* HEADER */
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .site-header {
     position: sticky;
@@ -70,7 +72,9 @@ body {
         6px 6px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* ADVERTISING */
+/* =========================================================
+   ADVERTISING
+   ========================================================= */
 
 .advertising {
     display: grid;
@@ -94,7 +98,9 @@ body {
     text-align: center;
 }
 
-/* PAGE */
+/* =========================================================
+   PAGE
+   ========================================================= */
 
 .gallery {
     width: 100%;
@@ -103,8 +109,7 @@ body {
     padding: 8px 30px 55px;
 }
 
-.gallery > h2,
-.people-section h2 {
+.gallery > h2 {
     margin: 0 0 4px;
     color: #000;
     font-size: clamp(16px, 2vw, 24px);
@@ -131,12 +136,14 @@ body {
     text-align: center;
 }
 
-/* THREE STORES */
+/* =========================================================
+   THREE STORES
+   ========================================================= */
 
 .stores-row {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 32px;
+    gap: clamp(10px, 3vw, 32px);
     align-items: start;
 }
 
@@ -148,24 +155,30 @@ body {
 .store-group h3 {
     margin: 0 0 12px;
     color: white;
-    font-size: clamp(14px, 1.6vw, 21px);
+    font-size: clamp(12px, 1.6vw, 21px);
     font-weight: 800;
     letter-spacing: 1px;
     text-align: center;
+    white-space: nowrap;
 }
 
 .store-items {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    gap: clamp(4px, 1vw, 10px);
+    min-width: 0;
 }
 
 .store-items .gallery-item {
-    min-height: 130px;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
     aspect-ratio: 1 / 1;
 }
 
-/* STORE CARDS */
+/* =========================================================
+   STORE CARDS
+   ========================================================= */
 
 .gallery-item {
     position: relative;
@@ -256,7 +269,9 @@ body {
     transform: translateX(4px);
 }
 
-/* PEOPLE I MAY KNOW */
+/* =========================================================
+   PEOPLE I MAY KNOW
+   ========================================================= */
 
 .people-section {
     margin-top: 15px;
@@ -264,14 +279,86 @@ body {
     border-top: 2px solid rgba(255, 255, 255, 0.25);
 }
 
-.people-section h2 {
-    margin: 0 0 10px;
+.people-heading-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    gap: 0;
 }
+
+.people-section h2 {
+    flex: 0 0 auto;
+    margin: 0;
+    color: #000;
+    font-size: clamp(16px, 2vw, 24px);
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-align: left;
+}
+
+/* Advertisement fills remaining width */
+.people-ad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 1 1 auto;
+    min-width: 0;
+
+    height: 43px;
+
+    margin-top: -15px;
+    margin-left: clamp(8px, 2vw, 30px);
+    margin-right: 0;
+
+    padding: 0 10px;
+
+    border: 1px solid rgba(201, 162, 39, 0.55);
+    border-radius: 6px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(201, 162, 39, 0.30),
+            rgba(97, 85, 102, 0.92) 35%,
+            rgba(97, 85, 102, 0.98) 65%,
+            rgba(201, 162, 39, 0.18)
+        );
+
+         box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.35),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.30),
+        0 2px 5px rgba(0, 0, 0, 0.30); 
+
+    color: #f7f4f6;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.people-ad::before {
+    display: none;
+}
+
+.people-ad-text {
+    transition: opacity 3.55s ease;
+}
+
+.people-ad-text.ad-changing {
+    opacity: 0;
+}
+
+/* =========================================================
+   PEOPLE GRID
+   ========================================================= */
 
 .people-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
+    gap: clamp(10px, 2vw, 20px);
+    width: 100%;
     max-width: 600px;
 }
 
@@ -288,10 +375,19 @@ body {
 }
 
 .person-slider {
-    position: relative;
+        position: relative;
     overflow: hidden;
-    border: 2px solid #111;
+
+    border: 2px solid #181818;
+    border-radius: 2px;
+
     background: #555;
+
+    /* 3D depth + subtle gold illumination */
+    box-shadow:
+        0 2px 0 #111,
+        0 4px 7px rgba(0, 0, 0, 0.45),
+        0 0 3px rgba(201, 162, 39, 0.75);
 }
 
 .person-slides {
@@ -313,6 +409,10 @@ body {
     object-fit: cover;
     scroll-snap-align: start;
 }
+
+/* =========================================================
+   SLIDER ARROWS
+   ========================================================= */
 
 .slider-arrow {
     position: absolute;
@@ -344,12 +444,16 @@ body {
     right: 6px;
 }
 
+/* =========================================================
+   LIKE BUTTON AND PHOTO COUNTER
+   ========================================================= */
+
 .photo-controls {
     position: absolute;
     right: 6px;
     bottom: 6px;
     left: 6px;
-    z-index: 2;
+    z-index: 3;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -378,10 +482,14 @@ body {
     font-size: 13px;
 }
 
+/* =========================================================
+   FOLLOW LOGOS
+   ========================================================= */
+
 .follow-links {
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 9px;
     margin-top: 7px;
 }
 
@@ -399,8 +507,8 @@ body {
 
 .follow-links img {
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 26px;
+    height: 26px;
     object-fit: contain;
     transition: transform 0.2s ease;
 }
@@ -409,9 +517,50 @@ body {
     transform: scale(1.15);
 }
 
-/* PHONE */
+/* =========================================================
+   MEDIUM SCREENS
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .gallery {
+        padding-left: clamp(12px, 3vw, 30px);
+        padding-right: clamp(12px, 3vw, 30px);
+    }
+
+    .stores-row {
+        gap: clamp(8px, 2vw, 18px);
+    }
+
+    .store-items {
+        gap: clamp(3px, 0.8vw, 8px);
+    }
+
+    .store-group h3 {
+        font-size: clamp(10px, 1.8vw, 17px);
+        letter-spacing: 0.5px;
+    }
+
+    .gallery-text {
+        gap: 3px;
+        padding: 5px;
+    }
+
+    .gallery-text span {
+        font-size: clamp(8px, 1.3vw, 13px);
+    }
+
+    .gallery-text small.explore {
+        font-size: clamp(5px, 0.8vw, 8px);
+    }
+}
+
+/* =========================================================
+   PHONE
+   ========================================================= */
 
 @media (max-width: 700px) {
+
     .header-content {
         height: 48px;
         padding: 0 12px;
@@ -438,12 +587,16 @@ body {
         font-size: 8px;
     }
 
+    /* PAGE */
+
     .gallery {
+        width: 100%;
         padding: 8px 8px 35px;
     }
 
     .gallery > h2 {
         margin-bottom: 10px;
+        font-size: 15px;
     }
 
     .gallery-subtitle {
@@ -451,81 +604,163 @@ body {
         font-size: 11px;
     }
 
-    /* Keeps all three stores on one phone row */
+    /* =====================================================
+       THREE STORES ON PHONE
+       ===================================================== */
+
     .stores-row {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 8px;
+        gap: clamp(3px, 1.8vw, 8px);
+        width: 100%;
+    }
+
+    .store-group {
+        min-width: 0;
+        width: 100%;
     }
 
     .store-group h3 {
         min-height: 0;
-        margin: 0 0 2px;
-        font-size: 9px;
-        line-height: 1;
+        margin: 0 0 4px;
+        font-size: clamp(7px, 2.1vw, 10px);
+        line-height: 1.1;
+        letter-spacing: 0;
+        white-space: normal;
+        overflow-wrap: break-word;
     }
 
     .store-items {
-        gap: 4px;
+        width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(2px, 1vw, 4px);
     }
 
     .store-items .gallery-item {
+        width: 100%;
+        min-width: 0;
         min-height: 0;
         aspect-ratio: 1 / 1;
     }
 
+    /* STORE TEXT */
+
     .gallery-text {
         gap: 2px;
         padding: 3px;
+        max-width: 100%;
     }
 
     .gallery-text span {
-        font-size: 6px;
+        max-width: 100%;
+        font-size: clamp(5px, 1.55vw, 7px);
         letter-spacing: 0;
+        line-height: 1.1;
     }
 
     .gallery-text small.explore {
         gap: 2px;
-        font-size: 4px;
+        font-size: clamp(3.5px, 1.1vw, 5px);
         letter-spacing: 0;
+        line-height: 1;
     }
 
     .gallery-text .arrow {
-        font-size: 7px;
+        font-size: clamp(6px, 1.8vw, 8px);
     }
+
+    /* =====================================================
+       PEOPLE SECTION ON PHONE
+       ===================================================== */
 
     .people-section {
         margin-top: 12px;
         padding-top: 12px;
     }
 
-    .people-section h2 {
+    .people-heading-row {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 0;
         margin-bottom: 8px;
     }
 
+    .people-section h2 {
+        flex: 0 0 auto;
+        margin: 0;
+        font-size: clamp(9px, 2.7vw, 12px);
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+    }
+
+    .people-ad {
+        flex: 1 1 auto;
+        min-width: 0;
+
+        height: clamp(20px, 5.5vw, 25px);
+
+        margin-top: 0;
+        margin-left: clamp(5px, 2vw, 12px);
+        margin-right: 0;
+
+        padding: 0 3px;
+
+        font-size: clamp(5px, 1.6vw, 7px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: clip;
+    }
+
+    .people-ad::before {
+        display: none;
+    }
+
+    .people-ad-text {
+        white-space: nowrap;
+    }
+
+    /* =====================================================
+       PEOPLE CARDS
+       ===================================================== */
+
     .people-grid {
+        width: 100%;
+        max-width: 600px;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 10px;
+        gap: clamp(5px, 2vw, 10px);
+    }
+
+    .person-card {
+        min-width: 0;
+        width: 100%;
     }
 
     .person-name {
         margin-bottom: 4px;
-        font-size: 11px;
+        font-size: clamp(9px, 2.8vw, 11px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .person-slider {
+        width: 100%;
     }
 
     .slider-arrow {
-    width: 16px;
-    height: 16px;
-    font-size: 15px;
-    line-height: 14px;
-}
+        width: clamp(15px, 4.5vw, 18px);
+        height: clamp(15px, 4.5vw, 18px);
+        font-size: clamp(13px, 4vw, 16px);
+        line-height: 14px;
+    }
 
-.slider-arrow-left {
-    left: 2px;
-}
+    .slider-arrow-left {
+        left: 2px;
+    }
 
-.slider-arrow-right {
-    right: 2px;
-}
+    .slider-arrow-right {
+        right: 2px;
+    }
 
     .photo-controls {
         right: 3px;
@@ -536,24 +771,75 @@ body {
     .like-button,
     .photo-count {
         padding: 2px 4px;
-        font-size: 7px;
+        font-size: clamp(6px, 1.8vw, 8px);
     }
 
     .like-button .heart {
-        font-size: 9px;
+        font-size: clamp(8px, 2.5vw, 10px);
     }
 
+    /* FOLLOW */
+
     .follow-links {
-        gap: 4px;
+        gap: clamp(3px, 1.5vw, 5px);
         margin-top: 4px;
     }
 
     .follow-label {
-        font-size: 6px;
+        font-size: clamp(5px, 1.7vw, 7px);
     }
 
     .follow-links img {
-        width: 12px;
-        height: 12px;
+        width: clamp(13px, 4vw, 16px);
+        height: clamp(13px, 4vw, 16px);
+    }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .gallery {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .stores-row {
+        gap: 3px;
+    }
+
+    .store-items {
+        gap: 2px;
+    }
+
+    .store-group h3 {
+        font-size: 7px;
+    }
+
+    .gallery-text {
+        padding: 2px;
+    }
+
+    .gallery-text span {
+        font-size: 5px;
+    }
+
+    .gallery-text small.explore {
+        font-size: 3.5px;
+    }
+
+    .people-section h2 {
+        font-size: 9px;
+    }
+
+    .people-ad {
+        margin-left: 5px;
+        font-size: 5px;
+    }
+
+    .people-grid {
+        gap: 5px;
     }
 }
