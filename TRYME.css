@@ -1,847 +1,2967 @@
 * {
+
     box-sizing: border-box;
+
 }
+
+
 
 html,
+
 body {
+
     margin: 0;
+
     padding: 0;
+
     width: 100%;
+
     min-height: 100%;
+
     background: rgb(182, 197, 219);
+
     color: white;
+
 }
 
+
+
 /* =========================================================
+
    HEADER
+
    ========================================================= */
 
 .site-header {
+
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
+
     width: 100%;
+
     margin: 0;
+
     background: rgb(85, 92, 102);
+
 }
+
+
 
 .header-content {
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     gap: 12px;
+
     width: 100%;
+
     height: 80px;
+
     padding: 0 20px;
+
     background: rgb(85, 92, 102);
+
 }
+
+
 
 .site-header .logo {
+
     width: 45px;
+
     height: 45px;
+
     flex: 0 0 auto;
+
     border: 2px solid #f4f4f4;
+
     border-radius: 50%;
+
     object-fit: cover;
+
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+
     box-shadow:
+
         0 2px 0 #777,
+
         0 5px 0 #444,
+
         0 8px 12px rgba(0, 0, 0, 0.45);
+
 }
+
+
 
 .site-header .logo:hover {
+
     transform: translateY(-2px);
+
     box-shadow:
+
         0 4px 0 #777,
+
         0 8px 0 #444,
+
         0 12px 16px rgba(0, 0, 0, 0.45);
+
 }
+
+
 
 .site-name {
+
     color: rgb(212, 220, 233);
+
     font-size: clamp(16px, 5vw, 35px);
+
     font-weight: 800;
+
     letter-spacing: 1px;
+
     text-shadow:
+
         1px 1px 0 #999,
+
         2px 2px 0 #888,
+
         3px 3px 0 #777,
+
         4px 4px 0 #666,
+
         5px 5px 0 #555,
+
         6px 6px 8px rgba(0, 0, 0, 0.5);
+
 }
 
+
+
 /* =========================================================
+
    ADVERTISING
+
    ========================================================= */
 
 .advertising {
+
     display: grid;
+
     grid-template-columns: repeat(3, minmax(0, 1fr));
+
     gap: 4px;
+
     width: 100%;
+
     margin: 0;
+
 }
+
+
 
 .advert-box {
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     min-width: 0;
+
     height: 35px;
+
     padding: 0 10px;
+
     background: rgb(97, 85, 102);
+
     color: rgb(212, 220, 233);
+
     font-size: 14px;
+
     font-weight: 700;
+
     text-align: center;
+
 }
 
+
+
 /* =========================================================
+
    PAGE
+
    ========================================================= */
 
 .gallery {
+
     width: 100%;
+
     max-width: 1300px;
+
     margin: 0 auto;
+
     padding: 8px 30px 55px;
+
 }
+
+
 
 .gallery > h2 {
+
     margin: 0 0 4px;
+
     color: #000;
+
     font-size: clamp(16px, 2vw, 24px);
+
     font-weight: 800;
+
     letter-spacing: 2px;
+
     text-align: left;
+
 }
+
+
 
 .gallery > h2::after {
+
     content: "";
+
     display: block;
+
     width: 65px;
+
     height: 4px;
+
     margin: 5px 0 0;
+
     background: #000;
+
     border-radius: 10px;
+
 }
+
+
 
 .gallery-subtitle {
+
     margin: 0 0 15px;
+
     color: #555;
+
     font-size: 16px;
+
     letter-spacing: 0.5px;
+
     text-align: center;
+
 }
 
+
+
 /* =========================================================
+
    THREE STORES
+
    ========================================================= */
 
 .stores-row {
+
     display: grid;
+
     grid-template-columns: repeat(3, minmax(0, 1fr));
+
     gap: clamp(10px, 3vw, 32px);
+
     align-items: start;
+
 }
+
+
 
 .store-group {
+
     min-width: 0;
+
     margin: 0;
+
 }
+
+
 
 .store-group h3 {
+
     margin: 0 0 12px;
+
     color: white;
+
     font-size: clamp(12px, 1.6vw, 21px);
+
     font-weight: 800;
+
     letter-spacing: 1px;
+
     text-align: center;
+
     white-space: nowrap;
+
 }
+
+
 
 .store-items {
+
     display: grid;
+
     grid-template-columns: repeat(2, minmax(0, 1fr));
+
     gap: clamp(4px, 1vw, 10px);
+
     min-width: 0;
+
 }
+
+
 
 .store-items .gallery-item {
+
     width: 100%;
+
     min-width: 0;
+
     min-height: 0;
+
     aspect-ratio: 1 / 1;
+
 }
 
+
+
 /* =========================================================
+
    STORE CARDS
+
    ========================================================= */
 
 .gallery-item {
+
     position: relative;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     overflow: hidden;
+
     border: 2px solid #444;
+
     border-radius: 14px;
+
     background: #111;
+
     color: white;
+
     text-decoration: none;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+
+    transition:
+
+        transform 0.3s ease,
+
+        border-color 0.3s ease;
+
 }
+
+
 
 .gallery-item img {
+
     position: absolute;
+
     inset: 0;
+
     width: 100%;
+
     height: 100%;
+
     object-fit: cover;
+
     transition: transform 0.4s ease;
+
 }
+
+
 
 .gallery-item::after {
+
     content: "";
+
     position: absolute;
+
     inset: 0;
+
     background: rgba(0, 0, 0, 0.45);
+
     transition: background 0.3s ease;
+
 }
+
+
 
 .gallery-text {
+
     position: relative;
+
     z-index: 1;
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     gap: 5px;
+
     padding: 8px;
+
     text-align: center;
+
 }
+
+
 
 .gallery-text span {
+
     color: white;
+
     font-size: clamp(10px, 1.2vw, 15px);
+
     font-weight: 800;
+
     letter-spacing: 0.5px;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+
+    text-shadow:
+
+        0 2px 8px rgba(0, 0, 0, 0.8);
+
 }
+
+
 
 .gallery-text small.explore {
+
     display: flex;
+
     align-items: center;
+
     gap: 4px;
+
     color: #c9a227;
+
     font-size: clamp(6px, 0.8vw, 9px);
+
     font-weight: 800;
+
     letter-spacing: 0.6px;
+
     transition: gap 0.3s ease;
+
 }
+
+
 
 .gallery-text .arrow {
+
     display: inline-block;
+
     color: #c9a227;
+
     font-size: 14px;
+
     transition: transform 0.3s ease;
+
 }
+
+
 
 .gallery-item:hover {
+
     transform: translateY(-5px);
+
     border-color: white;
+
 }
+
+
 
 .gallery-item:hover img {
+
     transform: scale(1.05);
+
 }
+
+
 
 .gallery-item:hover::after {
+
     background: rgba(0, 0, 0, 0.3);
+
 }
+
+
 
 .gallery-item:hover .explore {
+
     gap: 10px;
+
 }
+
+
 
 .gallery-item:hover .arrow {
+
     transform: translateX(4px);
+
 }
 
+
+
 /* =========================================================
+
    PEOPLE I MAY KNOW
+
    ========================================================= */
 
 .people-section {
+
     margin-top: 15px;
+
     padding-top: 15px;
-    border-top: 2px solid rgba(255, 255, 255, 0.25);
+
+    border-top:
+
+        2px solid rgba(255, 255, 255, 0.25);
+
 }
+
+
 
 .people-heading-row {
+
     display: flex;
+
     align-items: center;
+
     width: 100%;
+
     margin-bottom: 10px;
+
     gap: 0;
+
 }
+
+
 
 .people-section h2 {
+
     flex: 0 0 auto;
+
     margin: 0;
+
     color: #000;
+
     font-size: clamp(16px, 2vw, 24px);
+
     font-weight: 800;
+
     letter-spacing: 2px;
+
     text-align: left;
+
 }
 
-/* Advertisement fills remaining width */
+
+
+/* =========================================================
+
+   PEOPLE AD
+
+   ========================================================= */
+
 .people-ad {
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     flex: 1 1 auto;
+
     min-width: 0;
 
     height: 43px;
 
     margin-top: -15px;
+
     margin-left: clamp(8px, 2vw, 30px);
+
     margin-right: 0;
 
     padding: 0 10px;
 
-    border: 1px solid rgba(201, 162, 39, 0.55);
+    border:
+
+        1px solid rgba(201, 162, 39, 0.55);
+
     border-radius: 6px;
+
     background:
+
         linear-gradient(
+
             135deg,
+
             rgba(201, 162, 39, 0.30),
+
             rgba(97, 85, 102, 0.92) 35%,
+
             rgba(97, 85, 102, 0.98) 65%,
+
             rgba(201, 162, 39, 0.18)
+
         );
 
-         box-shadow:
+    box-shadow:
+
         inset 0 1px 2px rgba(255, 255, 255, 0.35),
+
         inset 0 -2px 4px rgba(0, 0, 0, 0.30),
-        0 2px 5px rgba(0, 0, 0, 0.30); 
+
+        0 2px 5px rgba(0, 0, 0, 0.30);
 
     color: #f7f4f6;
 
-    font-family: Georgia, "Times New Roman", serif;
+    font-family:
+
+        Georgia,
+
+        "Times New Roman",
+
+        serif;
+
     font-size: 14px;
+
     font-weight: 700;
+
     text-align: center;
+
 }
+
+
 
 .people-ad::before {
+
     display: none;
+
 }
+
+
 
 .people-ad-text {
+
     display: inline-block;
+
     white-space: nowrap;
-    transition: opacity 0.25s ease;
+
+    transition:
+
+        opacity 0.25s ease;
+
 }
+
+
 
 .people-ad-text.ad-changing {
+
     opacity: 0;
+
 }
 
+
+
 /* =========================================================
+
    PEOPLE GRID
+
    ========================================================= */
 
 .people-grid {
+
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    grid-template-columns:
+
+        repeat(3, minmax(0, 1fr));
+
     gap: clamp(10px, 2vw, 20px);
+
     width: 100%;
+
     max-width: 600px;
+
 }
+
+
 
 .person-card {
+
     min-width: 0;
+
 }
+
+
 
 .person-name {
+
     display: block;
+
     margin-bottom: 6px;
+
     color: white;
+
     font-size: 13px;
+
     font-weight: 800;
+
 }
 
+
+
 .person-slider {
-        position: relative;
+
+    position: relative;
+
     overflow: hidden;
 
     border: 2px solid #181818;
+
     border-radius: 2px;
 
     background: #555;
 
-    /* 3D depth + subtle gold illumination */
     box-shadow:
+
         0 2px 0 #111,
+
         0 4px 7px rgba(0, 0, 0, 0.45),
+
         0 0 3px rgba(201, 162, 39, 0.75);
+
 }
+
+
 
 .person-slides {
+
     display: flex;
+
     overflow-x: auto;
+
     scroll-snap-type: x mandatory;
+
     scrollbar-width: none;
+
     touch-action: pan-x;
+
 }
+
+
 
 .person-slides::-webkit-scrollbar {
+
     display: none;
+
 }
+
+
 
 .person-slides img {
+
     width: 100%;
+
     min-width: 100%;
+
     aspect-ratio: 3 / 4;
+
     object-fit: cover;
+
     scroll-snap-align: start;
+
 }
 
+
+
 /* =========================================================
+
    SLIDER ARROWS
+
    ========================================================= */
 
 .slider-arrow {
+
     position: absolute;
+
     top: 50%;
+
     z-index: 3;
+
     width: 30px;
+
     height: 30px;
+
     border: 0;
+
     border-radius: 50%;
+
     background: rgba(0, 0, 0, 0.65);
+
     color: white;
+
     font-size: 26px;
+
     line-height: 26px;
+
     cursor: pointer;
+
     transform: translateY(-50%);
-    transition: background 0.2s ease, transform 0.2s ease;
+
+    transition:
+
+        background 0.2s ease,
+
+        transform 0.2s ease;
+
 }
+
+
 
 .slider-arrow:hover {
+
     background: rgba(0, 0, 0, 0.9);
-    transform: translateY(-50%) scale(1.1);
+
+    transform:
+
+        translateY(-50%)
+
+        scale(1.1);
+
 }
+
+
 
 .slider-arrow-left {
+
     left: 6px;
+
 }
+
+
 
 .slider-arrow-right {
+
     right: 6px;
+
 }
 
+
+
 /* =========================================================
+
    LIKE BUTTON AND PHOTO COUNTER
+
    ========================================================= */
 
 .photo-controls {
+
     position: absolute;
+
     right: 6px;
+
     bottom: 6px;
+
     left: 6px;
+
     z-index: 3;
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
 }
+
+
 
 .like-button,
+
 .photo-count {
+
     padding: 3px 6px;
+
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.7);
+
+    background:
+
+        rgba(0, 0, 0, 0.7);
+
     color: white;
+
     font-size: 10px;
+
     font-weight: 800;
+
 }
+
+
 
 .like-button {
+
     border: 0;
+
     cursor: pointer;
+
 }
+
+
 
 .like-button.liked {
+
     color: #ff4d6d;
+
 }
+
+
 
 .like-button .heart {
+
     font-size: 13px;
+
 }
 
+
+
 /* =========================================================
+
    FOLLOW LOGOS
+
    ========================================================= */
 
 .follow-links {
+
     display: flex;
+
     align-items: center;
+
     gap: 9px;
+
     margin-top: 7px;
+
 }
+
+
 
 .follow-label {
+
     color: #000;
+
     font-size: 10px;
+
     font-weight: 800;
+
 }
+
+
 
 .follow-links a {
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
 }
+
+
 
 .follow-links img {
+
     display: block;
+
     width: 26px;
+
     height: 26px;
+
     object-fit: contain;
-    transition: transform 0.2s ease;
+
+    transition:
+
+        transform 0.2s ease;
+
 }
 
+
+
 .follow-links a:hover img {
+
     transform: scale(1.15);
+
+}
+
+
+
+/* =========================================================
+
+   MY CONTACT LIST
+
+   ========================================================= */
+
+.contact-section {
+
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding-top: 15px;
+
+    border-top:
+
+        2px solid rgba(255, 255, 255, 0.25);
+
+}
+
+
+
+/* =========================================================
+
+   CONTACT HEADING
+
+   ========================================================= */
+
+.contact-heading-row {
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    margin-bottom: 18px;
+
+    gap: 0;
+
+}
+
+
+
+.contact-section h2 {
+
+    flex: 0 0 auto;
+
+    margin: 0;
+
+    color: #000;
+
+    font-size: clamp(16px, 2vw, 24px);
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    text-align: left;
+
+}
+
+
+
+/* =========================================================
+
+   CONTACT AD
+
+   ========================================================= */
+
+.contact-ad {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex: 1 1 auto;
+
+    min-width: 0;
+
+    height: 43px;
+
+    margin-top: -15px;
+
+    margin-left: clamp(8px, 2vw, 30px);
+
+    margin-right: 0;
+
+    padding: 0 10px;
+
+    border:
+
+        1px solid rgba(201, 162, 39, 0.55);
+
+    border-radius: 6px;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            rgba(201, 162, 39, 0.30),
+
+            rgba(97, 85, 102, 0.92) 35%,
+
+            rgba(97, 85, 102, 0.98) 65%,
+
+            rgba(201, 162, 39, 0.18)
+
+        );
+
+    box-shadow:
+
+        inset 0 1px 2px rgba(255, 255, 255, 0.35),
+
+        inset 0 -2px 4px rgba(0, 0, 0, 0.30),
+
+        0 2px 5px rgba(0, 0, 0, 0.30);
+
+    color: #f7f4f6;
+
+    font-family:
+
+        Georgia,
+
+        "Times New Roman",
+
+        serif;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+}
+
+
+
+.contact-ad-text {
+
+    display: inline-block;
+
+    white-space: nowrap;
+
+    transition:
+
+        opacity 0.25s ease;
+
+}
+
+
+
+.contact-ad-text.ad-changing {
+
+    opacity: 0;
+
+}
+
+
+
+/* =========================================================
+
+   CONTACT GRID
+
+   ALWAYS EXACTLY TWO ROWS
+
+   ========================================================= */
+
+.contact-grid {
+
+    display: grid;
+
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+
+    grid-auto-flow: column;
+
+    /*
+        LARGE LAPTOP / DESKTOP
+
+        6 cards across x 2 rows.
+
+        Row 1: 1  3  5  7  9  11
+        Row 2: 2  4  6  8  10 12
+
+        Extra cards continue horizontally.
+        They NEVER create a third row.
+    */
+
+    grid-auto-columns:
+        calc(
+            (100% - (5 * clamp(8px, 1.5vw, 18px))) / 6
+        );
+
+    width: 100%;
+
+    gap: clamp(8px, 1.5vw, 18px);
+
+    align-items: stretch;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    padding: 6px 4px 14px;
+
+    scrollbar-width: thin;
+
+    scroll-snap-type: x proximity;
+
+    touch-action: pan-x;
+
+}
+
+
+
+/* =========================================================
+
+   CONTACT SCROLLBAR
+
+   ========================================================= */
+
+.contact-grid::-webkit-scrollbar {
+
+    height: 7px;
+
+}
+
+
+
+.contact-grid::-webkit-scrollbar-track {
+
+    background: rgba(0, 0, 0, 0.12);
+
+    border-radius: 20px;
+
+}
+
+
+
+.contact-grid::-webkit-scrollbar-thumb {
+
+    background: rgba(80, 75, 90, 0.65);
+
+    border-radius: 20px;
+
+}
+
+
+
+.contact-grid::-webkit-scrollbar-thumb:hover {
+
+    background: rgba(50, 45, 60, 0.85);
+
+}
+
+
+
+/* =========================================================
+
+   CONTACT CARD
+
+   ========================================================= */
+
+.contact-card {
+
+    position: relative;
+
+    width: 100%;
+
+    min-width: 0;
+
+    aspect-ratio: 3 / 4;
+
+    overflow: hidden;
+
+    border:
+
+        2px solid rgba(35, 39, 48, 0.85);
+
+    border-radius: 10px;
+
+    background:
+
+        linear-gradient(
+
+            145deg,
+
+            rgba(255, 255, 255, 0.16),
+
+            rgba(97, 85, 102, 0.32) 40%,
+
+            rgba(85, 92, 102, 0.42) 70%,
+
+            rgba(201, 162, 39, 0.12)
+
+        );
+
+    box-shadow:
+
+        inset 0 1px 2px rgba(255, 255, 255, 0.28),
+
+        inset 0 -3px 5px rgba(0, 0, 0, 0.25),
+
+        0 3px 0 rgba(20, 22, 27, 0.85),
+
+        0 6px 12px rgba(0, 0, 0, 0.30),
+
+        0 0 4px rgba(201, 162, 39, 0.35);
+
+    backdrop-filter: blur(4px);
+
+    -webkit-backdrop-filter: blur(4px);
+
+    transform: translateY(0);
+
+    transition:
+
+        transform 0.3s ease,
+
+        box-shadow 0.3s ease,
+
+        border-color 0.3s ease;
+
+}
+
+
+
+/* =========================================================
+
+   CONTACT SOCIAL ICONS
+
+   USE YOUR OWN IMAGE FILES
+
+   ========================================================= */
+
+.contact-socials {
+
+    position: absolute;
+
+    left: 6px;
+
+    right: 6px;
+
+    bottom: 6px;
+
+    z-index: 5;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    pointer-events: auto;
+
+}
+
+
+
+.contact-socials a {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 24px;
+
+    height: 24px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    text-decoration: none;
+
+    background: rgba(0, 0, 0, 0.62);
+
+    transition:
+
+        transform 0.2s ease,
+
+        background 0.2s ease;
+
+}
+
+
+
+.contact-socials a img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+}
+
+
+
+.contact-socials a:hover {
+
+    transform: scale(1.12);
+
+    background: rgba(0, 0, 0, 0.82);
+
+}
+
+
+
+/* =========================================================
+
+   CONTACT CARD HOVER
+
+   ========================================================= */
+
+.contact-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color:
+
+        rgba(201, 162, 39, 0.70);
+
+    box-shadow:
+
+        inset 0 1px 2px rgba(255, 255, 255, 0.35),
+
+        inset 0 -3px 5px rgba(0, 0, 0, 0.25),
+
+        0 4px 0 rgba(20, 22, 27, 0.85),
+
+        0 8px 16px rgba(0, 0, 0, 0.35),
+
+        0 0 7px rgba(201, 162, 39, 0.45);
+
+}
+
+
+
+/* =========================================================
+
+   CONTACT SLIDES
+
+   ========================================================= */
+
+.contact-slides {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+}
+
+
+
+/* =========================================================
+
+   CONTACT IMAGES
+
+   ========================================================= */
+
+.contact-slides img {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: 0;
+
+    transform: scale(1.02);
+
+    transition:
+
+        opacity 1.2s ease,
+
+        transform 5s ease;
+
+}
+
+
+
+/*
+
+   JavaScript controls which contact image is visible
+
+   using .contact-active.
+
+*/
+
+.contact-slides img.contact-active {
+
+    opacity: 1;
+
+    transform: scale(1);
+
+}
+
+
+
+/* =========================================================
+
+   GLASS OVERLAY
+
+   ========================================================= */
+
+.contact-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            rgba(255, 255, 255, 0.10),
+
+            transparent 30%,
+
+            transparent 70%,
+
+            rgba(201, 162, 39, 0.06)
+
+        );
+
+    box-shadow:
+
+        inset 0 1px 1px rgba(255, 255, 255, 0.18),
+
+        inset 0 -2px 4px rgba(0, 0, 0, 0.12);
+
+}
+
+
+/* =========================================================
+   CONTACT CARD — NEW TEXT POSITIONS
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   NAME + LOCATION
+   TOP RIGHT
+   --------------------------------------------------------- */
+
+.contact-card-name {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+
+    z-index: 20;
+
+    max-width: calc(100% - 14px);
+
+    color: #ffffff;
+
+    font-size: clamp(8px, 1.15vw, 13px);
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    text-align: right;
+
+    text-shadow:
+        1px 1px 2px #000000,
+        -1px -1px 2px #000000,
+        1px -1px 2px #000000,
+        -1px 1px 2px #000000;
+
+    pointer-events: none;
+}
+
+
+/* ---------------------------------------------------------
+   MORE
+   MIDDLE RIGHT
+   --------------------------------------------------------- */
+
+.contact-more {
+    position: absolute;
+
+    top: 50%;
+    right: 8px;
+
+    z-index: 20;
+
+    margin: 0;
+    padding: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: clamp(9px, 1.2vw, 13px);
+    font-weight: 800;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transform: translateY(-50%);
+
+    text-shadow:
+        1px 1px 2px #000000,
+        -1px -1px 2px #000000,
+        1px -1px 2px #000000,
+        -1px 1px 2px #000000;
+}
+
+
+/* ---------------------------------------------------------
+   VIEW PAGE
+   BELOW MORE
+   --------------------------------------------------------- */
+
+.contact-view-page {
+    position: absolute;
+
+    top: calc(50% + 34px);
+    right: 8px;
+
+    z-index: 20;
+
+    margin: 0;
+    padding: 0;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: clamp(9px, 1.2vw, 13px);
+    font-weight: 800;
+
+    line-height: 1;
+
+    text-align: right;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    text-shadow:
+        1px 1px 2px #000000,
+        -1px -1px 2px #000000,
+        1px -1px 2px #000000,
+        -1px 1px 2px #000000;
+}
+
+
+/* ---------------------------------------------------------
+   HOVER
+   --------------------------------------------------------- */
+
+.contact-more:hover,
+.contact-view-page:hover {
+    color: #ffff00;
 }
 
 /* =========================================================
+   CONTACT EXPANDED INFORMATION
+   SHOWN WHEN MORE IS CLICKED
+   ========================================================= */
+
+.contact-expanded-info {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 38px;
+
+    z-index: 19;
+
+    padding: 7px;
+
+    border-radius: 5px;
+
+    background: rgba(0, 0, 0, 0.72);
+
+    color: #ffffff;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(8px);
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease,
+        transform 0.25s ease;
+
+    pointer-events: none;
+}
+
+
+/* EACH INFORMATION LINE */
+
+.contact-expanded-line {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 5px;
+
+    margin-bottom: 4px;
+
+    font-size: clamp(7px, 1vw, 11px);
+
+    line-height: 1.2;
+}
+
+.contact-expanded-line:last-child {
+    margin-bottom: 0;
+}
+
+
+/* LABEL */
+
+.contact-expanded-line span {
+    color: #ffffff;
+
+    font-weight: 700;
+}
+
+
+/* INFORMATION VALUE */
+
+.contact-expanded-line strong {
+    color: #ffff00;
+
+    font-weight: 800;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   SHOW INFORMATION WHEN CARD IS EXPANDED
+   ========================================================= */
+
+.contact-card.expanded .contact-expanded-info {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+
+    pointer-events: auto;
+}
+
+
+/* KEEP MORE / LESS ABOVE THE INFORMATION */
+
+.contact-card.expanded .contact-more {
+    z-index: 22;
+}
+
+
+
+/* =========================================================
+
    MEDIUM SCREENS
+
    ========================================================= */
 
 @media (max-width: 1000px) {
 
     .gallery {
+
         padding-left: clamp(12px, 3vw, 30px);
+
         padding-right: clamp(12px, 3vw, 30px);
+
     }
+
+
 
     .stores-row {
+
         gap: clamp(8px, 2vw, 18px);
+
     }
+
+
 
     .store-items {
+
         gap: clamp(3px, 0.8vw, 8px);
+
     }
+
+
 
     .store-group h3 {
+
         font-size: clamp(10px, 1.8vw, 17px);
+
         letter-spacing: 0.5px;
+
     }
+
+
 
     .gallery-text {
+
         gap: 3px;
+
         padding: 5px;
+
     }
+
+
 
     .gallery-text span {
+
         font-size: clamp(8px, 1.3vw, 13px);
+
     }
+
+
 
     .gallery-text small.explore {
+
         font-size: clamp(5px, 0.8vw, 8px);
+
     }
+
+
+
+    /*
+
+       Keep contact list at TWO rows on medium screens.
+
+       FIVE columns are visible at a time.
+
+    */
+
+    .contact-grid {
+
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+
+        grid-auto-flow: column;
+
+        grid-auto-columns:
+
+            calc(
+
+                (100% - (4 * clamp(5px, 1.3vw, 12px))) / 5
+
+            );
+
+        gap: clamp(5px, 1.3vw, 12px);
+
+        overflow-x: auto;
+
+        overflow-y: hidden;
+
+        align-items: stretch;
+
+    }
+
+
+
+    .contact-card {
+
+        border-radius: 8px;
+
+    }
+
+    .contact-card-name {
+    top: 7px;
+    right: 7px;
+
+    max-width: calc(100% - 14px);
+
+    color: #ffffff;
+
+    font-size: clamp(9px, 1.35vw, 12px);
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    text-align: right;
+
+    text-shadow:
+        1px 1px 2px #000000,
+        -1px -1px 2px #000000,
+        1px -1px 2px #000000,
+        -1px 1px 2px #000000;
 }
 
+
+.contact-more {
+    top: 50%;
+    right: 7px;
+
+    font-size: clamp(9px, 1.35vw, 12px);
+    font-weight: 800;
+
+    color: #ffffff;
+
+    text-shadow:
+        1px 1px 2px #000000,
+        -1px -1px 2px #000000,
+        1px -1px 2px #000000,
+        -1px 1px 2px #000000;
+}
+
+
+.contact-view-page {
+    top: calc(50% + 32px);
+    right: 7px;
+
+    font-size: clamp(9px, 1.35vw, 12px);
+    font-weight: 800;
+
+    color: #ffffff;
+
+    text-shadow:
+        1px 1px 2px #000000,
+        -1px -1px 2px #000000,
+        1px -1px 2px #000000,
+        -1px 1px 2px #000000;
+}
+
+    .contact-expanded-info {
+        left: 7px;
+        right: 7px;
+        bottom: 36px;
+        padding: 6px;
+    }
+
+    .contact-expanded-line {
+        font-size: clamp(7px, 1vw, 10px);
+        gap: 4px;
+    }
+
+}
+
+
+
 /* =========================================================
+
    PHONE
+
    ========================================================= */
 
 @media (max-width: 700px) {
 
     .header-content {
+
         height: 48px;
+
         padding: 0 12px;
+
         gap: 9px;
+
     }
+
+
 
     .site-header .logo {
+
         width: 26px;
+
         height: 26px;
+
     }
+
+
 
     .site-name {
+
         font-size: 12px;
+
         letter-spacing: 0.5px;
+
     }
+
+
 
     .advertising {
+
         gap: 3px;
+
     }
+
+
 
     .advert-box {
+
         height: 28px;
+
         padding: 0 4px;
+
         font-size: 8px;
+
     }
 
-    /* PAGE */
 
-    .gallery {
-        width: 100%;
-        padding: 8px 8px 35px;
-    }
-
-    .gallery > h2 {
-        margin-bottom: 10px;
-        font-size: 15px;
-    }
-
-    .gallery-subtitle {
-        margin-bottom: 12px;
-        font-size: 11px;
-    }
 
     /* =====================================================
+
+       PAGE
+
+       ===================================================== */
+
+    .gallery {
+
+        width: 100%;
+
+        padding: 8px 8px 35px;
+
+    }
+
+
+
+    .gallery > h2 {
+
+        margin-bottom: 10px;
+
+        font-size: 15px;
+
+    }
+
+
+
+    .gallery-subtitle {
+
+        margin-bottom: 12px;
+
+        font-size: 11px;
+
+    }
+
+
+
+    /* =====================================================
+
        THREE STORES ON PHONE
+
        ===================================================== */
 
     .stores-row {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        grid-template-columns:
+
+            repeat(3, minmax(0, 1fr));
+
         gap: clamp(3px, 1.8vw, 8px);
+
         width: 100%;
+
     }
+
+
 
     .store-group {
+
         min-width: 0;
+
         width: 100%;
+
     }
+
+
 
     .store-group h3 {
+
         min-height: 0;
+
         margin: 0 0 4px;
+
         font-size: clamp(7px, 2.1vw, 10px);
+
         line-height: 1.1;
+
         letter-spacing: 0;
+
         white-space: normal;
+
         overflow-wrap: break-word;
+
     }
+
+
 
     .store-items {
+
         width: 100%;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        grid-template-columns:
+
+            repeat(2, minmax(0, 1fr));
+
         gap: clamp(2px, 1vw, 4px);
+
     }
 
+
+
     .store-items .gallery-item {
+
         width: 100%;
+
         min-width: 0;
+
         min-height: 0;
+
         aspect-ratio: 1 / 1;
+
     }
+
+
 
     /* STORE TEXT */
 
     .gallery-text {
+
         gap: 2px;
+
         padding: 3px;
+
         max-width: 100%;
+
     }
+
+
 
     .gallery-text span {
+
         max-width: 100%;
+
         font-size: clamp(5px, 1.55vw, 7px);
+
         letter-spacing: 0;
+
         line-height: 1.1;
+
     }
+
+
 
     .gallery-text small.explore {
+
         gap: 2px;
+
         font-size: clamp(3.5px, 1.1vw, 5px);
+
         letter-spacing: 0;
+
         line-height: 1;
+
     }
+
+
 
     .gallery-text .arrow {
+
         font-size: clamp(6px, 1.8vw, 8px);
+
     }
 
+
+
     /* =====================================================
-       PEOPLE SECTION ON PHONE
+
+       PEOPLE SECTION
+
        ===================================================== */
 
     .people-section {
+
         margin-top: 12px;
+
         padding-top: 12px;
+
     }
+
+
 
     .people-heading-row {
+
         display: flex;
+
         align-items: center;
+
         width: 100%;
+
         gap: 0;
+
         margin-bottom: 8px;
+
     }
+
+
 
     .people-section h2 {
+
         flex: 0 0 auto;
+
         margin: 0;
+
         font-size: clamp(9px, 2.7vw, 12px);
+
         letter-spacing: 0.5px;
+
         white-space: nowrap;
+
     }
 
+
+
     .people-ad {
+
         flex: 1 1 auto;
+
         min-width: 0;
 
-        height: clamp(20px, 5.5vw, 25px);
+        height:
 
-        margin-top: 0;
-        margin-left: clamp(5px, 2vw, 12px);
+            clamp(20px, 5.5vw, 25px);
+
+        margin-top: -12px;
+
+        margin-left:
+
+            clamp(5px, 2vw, 12px);
+
         margin-right: 0;
 
         padding: 0 3px;
 
-        font-size: clamp(5px, 1.6vw, 7px);
+        font-size:
+
+            clamp(5px, 1.6vw, 7px);
+
         white-space: nowrap;
+
         overflow: visible;
+
         text-overflow: clip;
+
     }
+
+
 
     .people-ad::before {
+
         display: none;
+
     }
+
+
 
     .people-ad-text {
+
         white-space: nowrap;
+
     }
 
+
+
     /* =====================================================
+
        PEOPLE CARDS
+
        ===================================================== */
 
     .people-grid {
+
         width: 100%;
+
         max-width: 600px;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: clamp(5px, 2vw, 10px);
+
+        grid-template-columns:
+
+            repeat(3, minmax(0, 1fr));
+
+        gap:
+
+            clamp(5px, 2vw, 10px);
+
     }
+
+
 
     .person-card {
+
         min-width: 0;
+
         width: 100%;
+
     }
+
+
 
     .person-name {
+
         margin-bottom: 4px;
-        font-size: clamp(9px, 2.8vw, 11px);
+
+        font-size:
+
+            clamp(9px, 2.8vw, 11px);
+
         white-space: nowrap;
+
         overflow: hidden;
+
         text-overflow: ellipsis;
+
     }
+
+
 
     .person-slider {
+
         width: 100%;
+
     }
+
+
 
     .slider-arrow {
-        width: clamp(15px, 4.5vw, 18px);
-        height: clamp(15px, 4.5vw, 18px);
-        font-size: clamp(13px, 4vw, 16px);
+
+        width:
+
+            clamp(15px, 4.5vw, 18px);
+
+        height:
+
+            clamp(15px, 4.5vw, 18px);
+
+        font-size:
+
+            clamp(13px, 4vw, 16px);
+
         line-height: 14px;
+
     }
+
+
 
     .slider-arrow-left {
+
         left: 2px;
+
     }
+
+
 
     .slider-arrow-right {
+
         right: 2px;
+
     }
+
+
 
     .photo-controls {
+
         right: 3px;
+
         bottom: 3px;
+
         left: 3px;
+
     }
+
+
 
     .like-button,
+
     .photo-count {
+
         padding: 2px 4px;
-        font-size: clamp(6px, 1.8vw, 8px);
+
+        font-size:
+
+            clamp(6px, 1.8vw, 8px);
+
     }
 
+
+
     .like-button .heart {
-        font-size: clamp(8px, 2.5vw, 10px);
+
+        font-size:
+
+            clamp(8px, 2.5vw, 10px);
+
     }
+
+
 
     /* FOLLOW */
 
     .follow-links {
-        gap: clamp(3px, 1.5vw, 5px);
+
+        gap:
+
+            clamp(3px, 1.5vw, 5px);
+
         margin-top: 4px;
+
     }
+
+
 
     .follow-label {
-        font-size: clamp(5px, 1.7vw, 7px);
+
+        font-size:
+
+            clamp(5px, 1.7vw, 7px);
+
     }
+
+
 
     .follow-links img {
-        width: clamp(13px, 4vw, 16px);
-        height: clamp(13px, 4vw, 16px);
+
+        width:
+
+            clamp(13px, 4vw, 16px);
+
+        height:
+
+            clamp(13px, 4vw, 16px);
+
     }
+
+
+
+    /* =====================================================
+
+       MY CONTACT LIST
+
+       ===================================================== */
+
+    .contact-section {
+
+        margin-top: 12px;
+
+        padding-top: 12px;
+
+    }
+
+
+
+    .contact-heading-row {
+
+        display: flex;
+
+        align-items: center;
+
+        width: 100%;
+
+        height: 22px;
+
+        margin-bottom: 14px;
+
+        gap: 0;
+
+    }
+
+
+
+    .contact-section h2 {
+
+        flex: 0 0 auto;
+
+        margin: 0;
+
+        font-size:
+
+            clamp(9px, 2.7vw, 12px);
+
+        letter-spacing: 0.5px;
+
+        white-space: nowrap;
+
+    }
+
+
+
+    /* CONTACT AD */
+
+    .contact-ad {
+
+        flex: 1 1 auto;
+
+        min-width: 0;
+
+        height:
+
+            clamp(20px, 5.5vw, 25px);
+
+        margin-top: -12px;
+
+        margin-left:
+
+            clamp(5px, 2vw, 12px);
+
+        margin-right: 0;
+
+        padding: 0 3px;
+
+        font-size:
+
+            clamp(5px, 1.6vw, 7px);
+
+        white-space: nowrap;
+
+        overflow: visible;
+
+        text-overflow: clip;
+
+    }
+
+
+
+    .contact-ad-text {
+
+        white-space: nowrap;
+
+    }
+
+
+
+    /* =====================================================
+
+       CONTACT GRID
+
+       ALWAYS EXACTLY TWO ROWS ON PHONE
+
+       THREE COLUMNS VISIBLE
+
+       ===================================================== */
+
+    .contact-grid {
+
+        display: grid;
+
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+
+        grid-auto-flow: column;
+
+        grid-auto-columns:
+
+            calc(
+
+                (100% - (2 * clamp(6px, 2vw, 10px))) / 3
+
+            );
+
+        width: 100%;
+
+        gap: clamp(6px, 2vw, 10px);
+
+        align-items: stretch;
+
+        overflow-x: auto;
+
+        overflow-y: hidden;
+
+        padding: 4px 3px 10px;
+
+        scrollbar-width: none;
+
+        scroll-snap-type: x proximity;
+
+        touch-action: pan-x;
+
+    }
+
+
+
+    .contact-grid::-webkit-scrollbar {
+
+        display: none;
+
+    }
+
+
+
+    /* CONTACT CARD */
+
+    .contact-card {
+
+        width: 100%;
+
+        min-width: 0;
+
+        aspect-ratio: 3 / 4;
+
+        border-width: 2px;
+
+        border-radius: 6px;
+
+        box-shadow:
+
+            inset 0 1px 2px rgba(255, 255, 255, 0.25),
+
+            inset 0 -2px 4px rgba(0, 0, 0, 0.25),
+
+            0 2px 0 rgba(20, 22, 27, 0.85),
+
+            0 4px 8px rgba(0, 0, 0, 0.30),
+
+            0 0 3px rgba(201, 162, 39, 0.30);
+
+    }
+
+
+
+    .contact-card:hover {
+
+        transform: translateY(-2px);
+
+    }
+
+
+
+    /* SMALL CONTACT SOCIAL ICONS ON PHONE */
+
+    .contact-socials {
+
+        left: 4px;
+
+        right: 4px;
+
+        bottom: 4px;
+
+        gap: 3px;
+
+    }
+
+
+
+    .contact-socials a {
+
+        width: 18px;
+
+        height: 18px;
+
+    }
+
+    .contact-card-name {
+        top: 6px;
+        right: 6px;
+
+        font-size: 8px;
+
+        max-width: calc(100% - 12px);
+    }
+
+
+    .contact-more {
+        right: 7px;
+
+        font-size: 9px;
+    }
+
+
+    .contact-view-page {
+        top: calc(50% + 28px);
+        right: 7px;
+
+        font-size: 9px;
+    }
+
+        .contact-expanded-info {
+        left: 5px;
+        right: 5px;
+        bottom: 30px;
+        padding: 5px;
+    }
+
+    .contact-expanded-line {
+        font-size: 6px;
+        gap: 3px;
+        margin-bottom: 3px;
+    }
+
+
 }
 
+
+
 /* =========================================================
+
    VERY SMALL PHONES
+
    ========================================================= */
 
 @media (max-width: 380px) {
 
     .gallery {
+
         padding-left: 5px;
+
         padding-right: 5px;
+
     }
+
+
 
     .stores-row {
+
         gap: 3px;
+
     }
+
+
 
     .store-items {
+
         gap: 2px;
+
     }
+
+
 
     .store-group h3 {
+
         font-size: 7px;
+
     }
+
+
 
     .gallery-text {
+
         padding: 2px;
+
     }
+
+
 
     .gallery-text span {
+
         font-size: 5px;
+
     }
+
+
 
     .gallery-text small.explore {
+
         font-size: 3.5px;
+
     }
+
+
 
     .people-section h2 {
+
         font-size: 9px;
+
     }
+
+
 
     .people-ad {
+
         margin-left: 5px;
+
         font-size: 5px;
+
     }
 
+
+
     .people-grid {
+
         gap: 5px;
+
     }
+
+
+
+    /* CONTACT LIST */
+
+    .contact-section h2 {
+
+        font-size: 9px;
+
+    }
+
+
+
+    .contact-ad {
+
+        margin-left: 5px;
+
+        font-size: 5px;
+
+    }
+
+
+
+    .contact-grid {
+
+        gap: 5px;
+
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+
+        grid-auto-flow: column;
+
+        grid-auto-columns:
+
+            calc(
+
+                (100% - 10px) / 3
+
+            );
+
+        overflow-x: auto;
+
+        overflow-y: hidden;
+
+    }
+
+
+
+    .contact-card {
+
+        border-radius: 5px;
+
+    }
+
+
+
+    .contact-socials {
+
+        left: 3px;
+
+        right: 3px;
+
+        bottom: 3px;
+
+        gap: 2px;
+
+    }
+
+
+
+    .contact-socials a {
+
+        width: 16px;
+
+        height: 16px;
+
+    }
+
+    .contact-card-name {
+        top: 5px;
+        right: 5px;
+
+        font-size: 7px;
+
+        max-width: calc(100% - 10px);
+    }
+
+
+    .contact-more {
+        right: 6px;
+
+        font-size: 8px;
+    }
+
+
+    .contact-view-page {
+        top: calc(50% + 26px);
+        right: 6px;
+
+        font-size: 8px;
+    }
+
+        .contact-expanded-info {
+        left: 4px;
+        right: 4px;
+        bottom: 28px;
+        padding: 4px;
+    }
+
+    .contact-expanded-line {
+        font-size: 5px;
+        gap: 2px;
+        margin-bottom: 2px;
+    }
+
+
 }
