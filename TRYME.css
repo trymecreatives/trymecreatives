@@ -1068,7 +1068,7 @@ body {
 
     width: 100%;
 
-    margin-bottom: 18px;
+    margin-bottom: 10px;
 
     gap: 0;
 
@@ -1824,6 +1824,496 @@ body {
     z-index: 22;
 }
 
+/* =========================================================
+   MY PLAYLIST
+   HEADING + AD
+   ========================================================= */
+/* =========================================================
+   MY PLAYLIST
+   HEADING
+   ========================================================= */
+
+.playlist-heading-row {
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    margin-bottom: 10px;
+
+    gap: 0;
+
+}
+
+
+.playlist-section h2 {
+
+    flex: 0 0 auto;
+
+    margin: 0;
+
+    color: #000;
+
+    font-size: clamp(16px, 2vw, 24px);
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    text-align: left;
+
+    white-space: nowrap;
+
+}
+.playlist-section {
+
+    margin-top: 15px;
+
+    padding-top: 15px;
+
+    border-top:
+        2px solid rgba(255, 255, 255, 0.25);
+
+}
+
+.playlist-ad {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex: 1 1 auto;
+
+    min-width: 0;
+
+    height: 43px;
+
+    margin-top: -15px;
+
+    margin-left: clamp(8px, 2vw, 30px);
+
+    margin-right: 0;
+
+    padding: 0 10px;
+
+    border:
+
+        1px solid rgba(201, 162, 39, 0.55);
+
+    border-radius: 6px;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            rgba(201, 162, 39, 0.30),
+
+            rgba(97, 85, 102, 0.92) 35%,
+
+            rgba(97, 85, 102, 0.98) 65%,
+
+            rgba(201, 162, 39, 0.18)
+
+        );
+
+    box-shadow:
+
+        inset 0 1px 2px rgba(255, 255, 255, 0.35),
+
+        inset 0 -2px 4px rgba(0, 0, 0, 0.30),
+
+        0 2px 5px rgba(0, 0, 0, 0.30);
+
+    color: #f7f4f6;
+
+    font-family:
+
+        Georgia,
+
+        "Times New Roman",
+
+        serif;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+}
+
+
+
+.playlist-ad::before {
+
+    display: none;
+
+}
+
+
+
+.playlist-ad-text {
+
+    display: inline-block;
+
+    white-space: nowrap;
+
+    transition:
+
+        opacity 0.25s ease;
+
+}
+
+
+
+.playlist-ad-text.ad-changing {
+
+    opacity: 0;
+
+}
+
+/* =========================================================
+   MY PLAYLIST
+   PLAYLIST GRID
+   ========================================================= */
+
+.playlist-content {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 3fr)
+        minmax(240px, 1fr);
+
+    gap: clamp(14px, 2vw, 24px);
+
+    width: 100%;
+
+    align-items: start;
+}
+
+.playlist-info {
+    position: sticky;
+    top: 20px;
+
+    width: 100%;
+    min-width: 0;
+
+    align-self: start;
+}
+
+/* =========================================================
+   PLAYLIST GRID
+   NATURAL PAGE SCROLL
+   ========================================================= */
+
+.playlist-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 14px 24px;
+
+    width: 100%;
+
+    align-items: start;
+}
+
+/* =========================================================
+   PLAYLIST CARDS
+   HIDE CARDS THAT ARE BELOW THE INFO PANEL
+   ========================================================= */
+
+.playlist-item.playlist-below-info {
+    visibility: hidden;
+}
+
+.playlist-item.playlist-visible {
+    visibility: visible;
+}
+
+
+/* =========================================================
+   PLAYLIST CARDS
+   SQUARE
+   ========================================================= */
+
+.playlist-item {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    border: 4px solid #888;
+    background: #ffffff;
+
+    box-sizing: border-box;
+
+    cursor: pointer;
+}
+.playlist-item img {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+.playlist-item-text {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    padding: 6px;
+
+    box-sizing: border-box;
+
+    color: #000;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+}
+
+
+.playlist-item-text span {
+
+    font-size: clamp(7px, 1vw, 11px);
+
+    font-weight: 800;
+
+    line-height: 1.1;
+
+}
+
+
+.playlist-item-text small {
+
+    margin-top: 3px;
+
+    font-size: clamp(5px, 0.8vw, 9px);
+
+    font-weight: 700;
+
+    line-height: 1.15;
+
+}
+
+.playlist-info {
+
+    position: sticky;
+
+    top: 20px;
+
+    align-self: start;
+
+    min-width: 0;
+
+}
+
+
+/* =====================================================
+   PLAYLIST INFORMATION PANEL
+   ===================================================== */
+
+.playlist-info {
+    position: sticky;
+    top: 20px;
+    align-self: start;
+
+    width: 100%;
+    min-width: 0;
+
+    border: 2px solid #888;
+    background: #fff;
+
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+
+/* PLAYLIST LARGE IMAGE */
+
+.playlist-info-image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+
+    background: #ddd;
+    overflow: hidden;
+}
+
+.playlist-info-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* PLAYLIST DETAILS */
+
+.playlist-info-details {
+    padding: 14px 16px 16px;
+    box-sizing: border-box;
+}
+
+.playlist-info-details h3 {
+    margin: 0 0 12px;
+
+    color: #111;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(18px, 2vw, 25px);
+    font-weight: 700;
+
+    line-height: 1.15;
+}
+
+.playlist-info-details p {
+    margin: 6px 0;
+
+    color: #222;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+
+    line-height: 1.35;
+}
+
+.playlist-info-details p strong {
+    font-weight: 700;
+}
+
+
+/* LISTEN ON */
+
+.playlist-listen {
+    margin-top: 16px;
+}
+
+.playlist-listen > span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #222;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* LISTEN BUTTONS */
+
+.playlist-listen-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.playlist-listen-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 36px;
+
+    border: 1px solid #555;
+    border-radius: 5px;
+
+    background: #198754;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    box-sizing: border-box;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.playlist-listen-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.85;
+}
+
+.playlist-listen-btn span {
+    font-size: 17px;
+    line-height: 1;
+}
+
+/* =========================================================
+   PLAYLIST BOUNDARY
+   ========================================================= */
+
+.playlist-content {
+    position: relative;
+}
+
+.playlist-boundary-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #ffffff;
+    pointer-events: none;
+    z-index: 20;
+}
+
+
+/* =========================================================
+   PLAYLIST INVISIBLE REVEAL MASK
+   ========================================================= */
+
+.playlist-reveal-mask {
+    position: absolute;
+    background: rgb(182, 197, 219);
+    pointer-events: none;
+    z-index: 15;
+}
+
+/* =========================================================
+   PLAYLIST YOUTUBE ICON
+   ========================================================= */
+
+.playlist-youtube-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    display: block;
+}
 
 
 /* =========================================================
@@ -2006,6 +2496,70 @@ body {
     .contact-expanded-line {
         font-size: clamp(7px, 1vw, 10px);
         gap: 4px;
+    }
+
+    /* =========================================================
+   MY PLAYLIST — MEDIUM
+   701px TO 1000px
+   ========================================================= */
+
+.playlist-heading-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8px;
+    gap: 0;
+}
+
+.playlist-section h2 {
+    flex: 0 0 auto;
+    margin: 0;
+
+    white-space: nowrap;
+}
+
+.playlist-ad {
+    flex: 1 1 auto;
+    min-width: 0;
+
+    height: clamp(28px, 4vw, 38px);
+
+    margin-top: 2px;
+    margin-left: clamp(8px, 2vw, 20px);
+    margin-right: 0;
+
+    padding: 0 6px;
+
+    box-sizing: border-box;
+}
+
+.playlist-ad-text {
+    white-space: nowrap;
+    text-align: center;
+}
+
+.playlist-grid {
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap:
+        clamp(8px, 1.8vw, 14px)
+        clamp(10px, 2.5vw, 20px);
+
+}
+
+    .playlist-content {
+        grid-template-columns:
+            minmax(0, 2.2fr)
+            minmax(210px, 1fr);
+
+        gap: clamp(10px, 2vw, 18px);
+    }
+
+    .playlist-info {
+        position: sticky;
+        top: 15px;
     }
 
 }
@@ -2530,7 +3084,7 @@ body {
 
         height: 22px;
 
-        margin-bottom: 14px;
+        margin-bottom: 8px;
 
         gap: 0;
 
@@ -2568,7 +3122,7 @@ body {
 
             clamp(20px, 5.5vw, 25px);
 
-        margin-top: -12px;
+        margin-top: -20px;
 
         margin-left:
 
@@ -2756,6 +3310,115 @@ body {
     }
 
 
+  .playlist-section {
+
+        margin-top: 12px;
+
+        padding-top: 12px;
+
+    }
+
+
+
+    .playlist-heading-row {
+
+        display: flex;
+
+        align-items: center;
+
+        width: 100%;
+
+        gap: 0;
+
+        margin-bottom: 8px;
+
+    }
+
+
+
+    .playlist-section h2 {
+
+        flex: 0 0 auto;
+
+        margin: 0;
+
+        font-size: clamp(9px, 2.7vw, 12px);
+
+        letter-spacing: 0.5px;
+
+        white-space: nowrap;
+
+    }
+
+
+
+    .playlist-ad {
+
+        flex: 1 1 auto;
+
+        min-width: 0;
+
+        height:
+
+            clamp(20px, 5.5vw, 25px);
+
+        margin-top: -12px;
+
+        margin-left:
+
+            clamp(5px, 2vw, 12px);
+
+        margin-right: 0;
+
+        padding: 0 3px;
+
+        font-size:
+
+            clamp(5px, 1.6vw, 7px);
+
+        white-space: nowrap;
+
+        overflow: visible;
+
+        text-overflow: clip;
+
+    }
+
+
+
+    .playlist-ad::before {
+
+        display: none;
+
+    }
+
+
+
+    .playlist-ad-text {
+
+        white-space: nowrap;
+
+    }
+
+      .playlist-content {
+        display: flex;
+        flex-direction: column;
+
+        gap: 14px;
+    }
+
+    .playlist-info {
+        position: relative;
+        top: auto;
+
+        width: 100%;
+
+        order: 1;
+    }
+
+    .playlist-grid {
+        order: 2;
+    }
 }
 
 
@@ -2963,5 +3626,73 @@ body {
         margin-bottom: 2px;
     }
 
+    /* =========================================================
+   MY PLAYLIST — VERY SMALL PHONES
+   380px AND BELOW
+   ========================================================= */
+
+.playlist-heading-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 22px;
+    margin-bottom: 8px;
+    gap: 0;
+}
+
+.playlist-section h2 {
+    flex: 0 0 auto;
+    margin: 0;
+
+    font-size: 9px;
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+}
+
+.playlist-ad {
+    flex: 1 1 auto;
+    min-width: 0;
+
+    height: 20px;
+
+    margin-top: 2px;
+    margin-left: 5px;
+    margin-right: 0;
+
+    padding: 0 3px;
+
+    box-sizing: border-box;
+
+    font-size: 5px;
+
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+}
+
+.playlist-ad-text {
+    white-space: nowrap;
+    text-align: center;
+}
+
+.playlist-grid {
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap:
+        4px
+        6px;
+
+}
+
+    .playlist-content {
+        gap: 10px;
+    }
+
+    .playlist-info-details {
+        padding: 10px;
+    }
 
 }
