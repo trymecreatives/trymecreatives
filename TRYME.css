@@ -1990,7 +1990,7 @@ body {
         minmax(0, 3fr)
         minmax(240px, 1fr);
 
-    gap: clamp(14px, 2vw, 24px);
+    gap: 4px;
 
     width: 100%;
 
@@ -1998,8 +1998,6 @@ body {
 }
 
 .playlist-info {
-    position: sticky;
-    top: 20px;
 
     width: 100%;
     min-width: 0;
@@ -2014,15 +2012,66 @@ body {
 
 .playlist-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    gap: 14px 24px;
-
+    grid-template-columns: repeat(9, 140px);
+    grid-template-rows: repeat(2, 140px);
+    grid-auto-flow: row;
+    gap: 10px;
     width: 100%;
-
+    overflow-x: auto;
+    overflow-y: hidden;
     align-items: start;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Desktop playlist snake rows */
+@media (min-width: 1001px) {
+    .playlist-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+
+.playlist-snake-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.playlist-snake-row::-webkit-scrollbar {
+    display: none;
+}
+
+
+    .playlist-snake-row .playlist-item {
+        flex: 0 0 140px;
+        width: 140px;
+        height: 140px;
+        min-width: 140px;
+    }
+
+
+    /* Prepare playlist rows for snake movement */
+    .playlist-snake-row {
+        position: relative;
+    }
+
+}
+
+.playlist-grid .playlist-item {
+    width: 140px;
+    height: 140px;
+    min-width: 140px;
+    aspect-ratio: 1 / 1;
 }
 
 /* =========================================================
@@ -2127,15 +2176,26 @@ body {
 
 .playlist-info {
 
-    position: sticky;
-
-    top: 20px;
-
     align-self: start;
 
     min-width: 0;
 
 }
+
+/* Smooth playlist card reveal */
+.playlist-grid .playlist-item {
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s ease;
+}
+
+.playlist-grid .playlist-item.playlist-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 
 /* =====================================================
@@ -2143,8 +2203,6 @@ body {
    ===================================================== */
 
 .playlist-info {
-    position: sticky;
-    top: 20px;
     align-self: start;
 
     width: 100%;
@@ -2538,29 +2596,63 @@ body {
     text-align: center;
 }
 
-.playlist-grid {
 
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    gap:
-        clamp(8px, 1.8vw, 14px)
-        clamp(10px, 2.5vw, 20px);
-
+    
+.playlist-content {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+    gap: 4px;
+    width: 100%;
+    align-items: start;
 }
 
-    .playlist-content {
-        grid-template-columns:
-            minmax(0, 2.2fr)
-            minmax(210px, 1fr);
 
-        gap: clamp(10px, 2vw, 18px);
-    }
 
-    .playlist-info {
-        position: sticky;
-        top: 15px;
-    }
+.playlist-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+    width: 100%;
+    overflow: visible;
+}
+
+
+
+.playlist-snake-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.playlist-snake-row::-webkit-scrollbar {
+    display: none;
+}
+
+
+.playlist-snake-row .playlist-item {
+    flex: 0 0 clamp(60px, 10vw, 120px);
+    width: clamp(60px, 10vw, 120px);
+    min-width: clamp(60px, 10vw, 120px);
+    height: clamp(60px, 10vw, 120px);
+    aspect-ratio: 1 / 1;
+}
+
+.playlist-info {
+    width: 100%;
+    min-width: 0;
+}
+
+
+
+   
 
 }
 
@@ -3400,25 +3492,67 @@ body {
 
     }
 
-      .playlist-content {
-        display: flex;
-        flex-direction: column;
+      
+.playlist-content {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+    gap: 4px;
+    width: 100%;
+    align-items: start;
+}
 
-        gap: 14px;
-    }
 
-    .playlist-info {
-        position: relative;
-        top: auto;
+    
+.playlist-info {
+    position: relative;
+    top: auto;
+    width: 100%;
+    min-width: 0;
+    order: initial;
+}
 
-        width: 100%;
 
-        order: 1;
-    }
+.playlist-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    width: 100%;
+    overflow: visible;
+}
 
-    .playlist-grid {
-        order: 2;
-    }
+
+
+
+.playlist-snake-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.playlist-snake-row::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+.playlist-snake-row .playlist-item {
+    flex: 0 0 clamp(45px, 18vw, 100px);
+    width: clamp(45px, 18vw, 100px);
+    min-width: clamp(45px, 18vw, 100px);
+    height: clamp(45px, 18vw, 100px);
+    aspect-ratio: 1 / 1;
+}
+
+
+
 }
 
 
@@ -3676,23 +3810,65 @@ body {
     text-align: center;
 }
 
+
+.playlist-content {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+    gap: 4px;
+    width: 100%;
+    align-items: start;
+}
+
+
 .playlist-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    width: 100%;
+    overflow: visible;
+}
 
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
 
-    gap:
-        4px
-        6px;
+
+.playlist-snake-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.playlist-snake-row::-webkit-scrollbar {
+    display: none;
+}
+
+
+.playlist-snake-row .playlist-item {
+    flex: 0 0 48px;
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    aspect-ratio: 1 / 1;
+}
+
+.playlist-info {
+    width: 100%;
+    min-width: 0;
+    order: initial;
+}
+
+
+    
 
 }
 
-    .playlist-content {
-        gap: 10px;
-    }
 
-    .playlist-info-details {
-        padding: 10px;
-    }
 
-}
+
+
