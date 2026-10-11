@@ -361,12 +361,12 @@ if (playlistItems.length > 0 && playlistInfo) {
         },
 
         4: {
-            title: "Her Bestfend",
+            title: "Playlist 4",
             songs: "15",
             age: "21+",
             by: "BS",
-            image: "Her Bestie Playlist.jpg",
-            youtube: "https://www.youtube.com/watch?v=gUbSPdTfYsw&list=PLJ6thRmW1Ba4"
+            image: "YOUR-PLAYLIST-COVER-84.jpg",
+            youtube: "YOUR-YOUTUBE-LINK-12"
         },
 
         5: {
@@ -415,21 +415,21 @@ if (playlistItems.length > 0 && playlistInfo) {
         },
 
         10: {
-            title: "Playlist 10",
-            songs: "13",
-            age: "18+",
-            by: "tryme creatives",
-            image: "YOUR-PLAYLIST-COVER-10.jpg",
-            youtube: "YOUR-YOUTUBE-LINK-10"
+            title: "Bestie's Bestfriend",
+            songs: "34",
+            age: "25",
+            by: "Bashir",
+            image: "Bestie Bestie playlist.jpg",
+            youtube: "https://www.youtube.com/watch?v=c18441Eh_WE&list=PLJhO289VnAR0"
         },
 
         11: {
-            title: "Playlist 11",
+            title: "Her Bestfrend",
             songs: "24",
             age: "21+",
-            by: "tryme creatives",
-            image: "YOUR-PLAYLIST-COVER-11.jpg",
-            youtube: "YOUR-YOUTUBE-LINK-11"
+            by: "BS",
+            image: "Her Bestie Playlist.jpg",
+            youtube: "https://www.youtube.com/watch?v=gUbSPdTfYsw&list=PLJ6thRmW1Ba4"
         },
 
         12: {
@@ -958,75 +958,5 @@ setTimeout(
 })();
 
 
-
-
-/* PLAYLIST INLINE YOUTUBE PLAYER */
-(function () {
-    const imageContainer = document.querySelector(".playlist-info-image");
-
-    if (!imageContainer) return;
-
-    const playButton = document.createElement("button");
-    playButton.type = "button";
-    playButton.className = "playlist-inline-play";
-    playButton.setAttribute("aria-label", "Play playlist on YouTube");
-    playButton.innerHTML = "▶";
-
-
-imageContainer.style.position = "relative";
-
-playButton.style.position = "absolute";
-playButton.style.top = "50%";
-playButton.style.left = "50%";
-playButton.style.transform = "translate(-50%, -50%)";
-playButton.style.zIndex = "10";
-playButton.style.width = "58px";
-playButton.style.height = "58px";
-playButton.style.border = "none";
-playButton.style.borderRadius = "50%";
-playButton.style.background = "#ff0000";
-playButton.style.color = "#ffffff";
-playButton.style.fontSize = "25px";
-playButton.style.cursor = "pointer";
-playButton.style.display = "flex";
-playButton.style.alignItems = "center";
-playButton.style.justifyContent = "center";
-
-
-    imageContainer.appendChild(playButton);
-
-    playButton.addEventListener("click", function () {
-        const youtubeLink = document.querySelector(".playlist-youtube-link");
-
-        if (!youtubeLink || !youtubeLink.href) return;
-
-        const videoUrl = youtubeLink.href;
-        const videoIdMatch = videoUrl.match(
-            /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?]+)/
-        );
-
-        if (!videoIdMatch) {
-            alert("This playlist does not have a valid YouTube video link yet.");
-            return;
-        }
-
-        const videoId = videoIdMatch[1];
-        const iframe = document.createElement("iframe");
-
-        iframe.src =
-            "https://www.youtube.com/embed/" +
-            encodeURIComponent(videoId) +
-            "?autoplay=1";
-
-        iframe.title = "Playlist YouTube player";
-        iframe.allow =
-            "autoplay; encrypted-media; picture-in-picture; fullscreen";
-        iframe.allowFullscreen = true;
-        iframe.referrerPolicy = "strict-origin-when-cross-origin";
-        iframe.frameBorder = "0";
-
-        imageContainer.replaceChildren(iframe);
-    });
-})();
 
 
