@@ -335,7 +335,7 @@ if (playlistItems.length > 0 && playlistInfo) {
 
         1: {
             title: "Her Contact List",
-            songs: "16",
+            songs: "78",
             age: "22+",
             by: "Drata",
             image: "Her contact list playlist.jpg",
@@ -361,7 +361,7 @@ if (playlistItems.length > 0 && playlistInfo) {
         },
 
         4: {
-            title: "Her Bestfriend",
+            title: "Her Bestfend",
             songs: "15",
             age: "21+",
             by: "BS",
@@ -379,10 +379,10 @@ if (playlistItems.length > 0 && playlistInfo) {
         },
 
         6: {
-            title: "Playlist 6",
+            title: "Mzee Tali",
             songs: "14",
             age: "18+",
-            by: "tryme creatives",
+            by: "Choma Lie",
             image: "YOUR-PLAYLIST-COVER-6.jpg",
             youtube: "YOUR-YOUTUBE-LINK-6"
         },
@@ -439,7 +439,58 @@ if (playlistItems.length > 0 && playlistInfo) {
             by: "tryme creatives",
             image: "YOUR-PLAYLIST-COVER-12.jpg",
             youtube: "YOUR-YOUTUBE-LINK-12"
-        }
+        },
+
+    
+13: {
+    title: "Playlist 13",
+    songs: "0",
+    age: "18+",
+    by: "tryme creatives",
+    image: "YOUR-IMAGE-13.jpg",
+    youtube: "YOUR-YOUTUBE-LINK-13"
+},
+14: {
+    title: "Playlist 14",
+    songs: "0",
+    age: "18+",
+    by: "tryme creatives",
+    image: "YOUR-IMAGE-14.jpg",
+    youtube: "YOUR-YOUTUBE-LINK-14"
+},
+15: {
+    title: "Playlist 15",
+    songs: "0",
+    age: "18+",
+    by: "tryme creatives",
+    image: "YOUR-IMAGE-15.jpg",
+    youtube: "YOUR-YOUTUBE-LINK-15"
+},
+16: {
+    title: "Playlist 16",
+    songs: "0",
+    age: "18+",
+    by: "tryme creatives",
+    image: "YOUR-IMAGE-16.jpg",
+    youtube: "YOUR-YOUTUBE-LINK-16"
+},
+17: {
+    title: "Playlist 17",
+    songs: "0",
+    age: "18+",
+    by: "tryme creatives",
+    image: "YOUR-IMAGE-17.jpg",
+    youtube: "YOUR-YOUTUBE-LINK-17"
+},
+18: {
+    title: "Playlist 18",
+    songs: "0",
+    age: "18+",
+    by: "tryme creatives",
+    image: "YOUR-IMAGE-18.jpg",
+    youtube: "YOUR-YOUTUBE-LINK-18"
+}
+
     };
 
     /* =====================================================
@@ -629,7 +680,7 @@ function updatePlaylistBoundary() {
        On phone/tablet layout,
        hide the boundary and mask.
     */
-    if (window.innerWidth <= 700) {
+    if (window.innerWidth <= 380) {
 
         playlistBoundaryLine.style.display =
             "none";
@@ -698,28 +749,49 @@ function updatePlaylistBoundary() {
    Cards are NOT individually hidden anymore.
    The invisible mask creates the reveal effect.
    ========================================================= */
-function updatePlaylistVisibility() {
 
+function updatePlaylistVisibility() {
     if (!playlistGrid) {
         return;
     }
 
-    playlistGrid
-        .querySelectorAll(".playlist-item")
-        .forEach(function (card) {
+    const cards = playlistGrid.querySelectorAll(".playlist-item");
 
-            card.classList.remove(
-                "playlist-below-info"
-            );
-
-            card.classList.add(
-                "playlist-visible"
-            );
+    if (!("IntersectionObserver" in window)) {
+        cards.forEach(function (card) {
+            card.classList.add("playlist-visible");
         });
+
+        updatePlaylistBoundary();
+        return;
+    }
+
+    if (!playlistGrid.playlistRevealObserver) {
+        playlistGrid.playlistRevealObserver =
+            new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("playlist-visible");
+
+                        playlistGrid.playlistRevealObserver.unobserve(
+                            entry.target
+                        );
+                    }
+                });
+            }, {
+                root: playlistGrid,
+                threshold: 0.15
+            });
+    }
+
+    cards.forEach(function (card) {
+        if (!card.classList.contains("playlist-visible")) {
+            playlistGrid.playlistRevealObserver.observe(card);
+        }
+    });
 
     updatePlaylistBoundary();
 }
-
 /* =========================================================
    INITIAL CHECK
    ========================================================= */
@@ -767,3 +839,194 @@ setTimeout(
     },
     300
 );
+
+
+
+
+
+/* PLAYLIST ROW SCROLLING — ALL SCREEN SIZES */
+(function () {
+    const topRow = document.querySelector(".playlist-snake-top");
+    const bottomRow = document.querySelector(".playlist-snake-bottom");
+
+    if (!topRow || !bottomRow) return;
+
+    const rows = [topRow, bottomRow];
+
+    rows.forEach(function (row) {
+        row.style.overflowX = "auto";
+        row.style.overflowY = "hidden";
+        row.style.webkitOverflowScrolling = "touch";
+    });
+
+    let activeRow = null;
+    let animationFrame = null;
+    let lastTime = 0;
+    let resumeTimer = null;
+
+    const speed = 0.8;
+
+    function stopAnimation() {
+        if (animationFrame !== null) {
+            cancelAnimationFrame(animationFrame);
+            animationFrame = null;
+        }
+
+        lastTime = 0;
+    }
+
+    function animate(time) {
+        if (!activeRow) {
+            stopAnimation();
+            return;
+        }
+
+        if (lastTime) {
+            const elapsed = Math.min((time - lastTime) / 16.67, 2);
+            const source = activeRow;
+            const target = source === topRow ? bottomRow : topRow;
+
+            const sourceMax = source.scrollWidth - source.clientWidth;
+            const targetMax = target.scrollWidth - target.clientWidth;
+
+            if (sourceMax > 0 && targetMax > 0) {
+                const direction = source.scrollLeft >= sourceMax
+                    ? -1
+                    : source.scrollLeft <= 0
+                        ? 1
+                        : source.dataset.lastDirection === "-1"
+                            ? -1
+                            : 1;
+
+                target.scrollLeft = Math.max(
+                    0,
+                    Math.min(
+                        targetMax,
+                        target.scrollLeft - direction * speed * elapsed
+                    )
+                );
+            }
+        }
+
+        lastTime = time;
+        animationFrame = requestAnimationFrame(animate);
+    }
+
+    function startFollowing(source) {
+        activeRow = source;
+        stopAnimation();
+        lastTime = 0;
+        animationFrame = requestAnimationFrame(animate);
+
+        clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(function () {
+            activeRow = null;
+            stopAnimation();
+        }, 30);
+    }
+
+    rows.forEach(function (row) {
+        let previousScrollLeft = row.scrollLeft;
+
+        row.addEventListener("scroll", function () {
+            const difference = row.scrollLeft - previousScrollLeft;
+            previousScrollLeft = row.scrollLeft;
+
+            if (Math.abs(difference) < 0.1) return;
+
+            row.dataset.lastDirection = difference > 0 ? "1" : "-1";
+            startFollowing(row);
+        }, { passive: true });
+
+        row.addEventListener("pointerdown", function () {
+            activeRow = row;
+        });
+
+        row.addEventListener("pointerup", function () {
+            clearTimeout(resumeTimer);
+            resumeTimer = setTimeout(function () {
+                activeRow = null;
+                stopAnimation();
+            }, 30);
+        });
+
+        row.addEventListener("pointercancel", function () {
+            activeRow = null;
+            stopAnimation();
+        });
+    });
+})();
+
+
+
+
+/* PLAYLIST INLINE YOUTUBE PLAYER */
+(function () {
+    const imageContainer = document.querySelector(".playlist-info-image");
+
+    if (!imageContainer) return;
+
+    const playButton = document.createElement("button");
+    playButton.type = "button";
+    playButton.className = "playlist-inline-play";
+    playButton.setAttribute("aria-label", "Play playlist on YouTube");
+    playButton.innerHTML = "▶";
+
+
+imageContainer.style.position = "relative";
+
+playButton.style.position = "absolute";
+playButton.style.top = "50%";
+playButton.style.left = "50%";
+playButton.style.transform = "translate(-50%, -50%)";
+playButton.style.zIndex = "10";
+playButton.style.width = "58px";
+playButton.style.height = "58px";
+playButton.style.border = "none";
+playButton.style.borderRadius = "50%";
+playButton.style.background = "#ff0000";
+playButton.style.color = "#ffffff";
+playButton.style.fontSize = "25px";
+playButton.style.cursor = "pointer";
+playButton.style.display = "flex";
+playButton.style.alignItems = "center";
+playButton.style.justifyContent = "center";
+
+
+    imageContainer.appendChild(playButton);
+
+    playButton.addEventListener("click", function () {
+        const youtubeLink = document.querySelector(".playlist-youtube-link");
+
+        if (!youtubeLink || !youtubeLink.href) return;
+
+        const videoUrl = youtubeLink.href;
+        const videoIdMatch = videoUrl.match(
+            /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?]+)/
+        );
+
+        if (!videoIdMatch) {
+            alert("This playlist does not have a valid YouTube video link yet.");
+            return;
+        }
+
+        const videoId = videoIdMatch[1];
+        const iframe = document.createElement("iframe");
+
+        iframe.src =
+            "https://www.youtube.com/embed/" +
+            encodeURIComponent(videoId) +
+            "?autoplay=1";
+
+        iframe.title = "Playlist YouTube player";
+        iframe.allow =
+            "autoplay; encrypted-media; picture-in-picture; fullscreen";
+        iframe.allowFullscreen = true;
+        iframe.referrerPolicy = "strict-origin-when-cross-origin";
+        iframe.frameBorder = "0";
+
+        imageContainer.replaceChildren(iframe);
+    });
+})();
+
+
