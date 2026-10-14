@@ -2350,15 +2350,6 @@ body {
     position: relative;
 }
 
-.playlist-boundary-line {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: #ffffff;
-    pointer-events: none;
-    z-index: 20;
-}
 
 
 /* =========================================================
@@ -2382,6 +2373,206 @@ body {
     object-fit: contain;
     display: block;
 }
+
+
+/* WHATSAPP STATUS HEADING */
+
+.whatsapp-status-section {
+    width: 100%;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.whatsapp-status-heading-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    gap: 0;
+}
+
+.whatsapp-status-section h2 {
+    flex: 0 0 auto;
+    margin: 0;
+    color: #000;
+    font-size: clamp(16px, 2vw, 24px);
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+
+/* WHATSAPP STATUS AD */
+
+.whatsapp-status-ad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 43px;
+    margin-top: -15px;
+    margin-left: clamp(8px, 2vw, 30px);
+    padding: 0 10px;
+    border: 1px solid rgba(201, 162, 39, 0.55);
+    border-radius: 6px;
+    background: linear-gradient(
+        135deg,
+        rgba(201, 162, 39, 0.30),
+        rgba(97, 85, 102, 0.92) 35%,
+        rgba(97, 85, 102, 0.98) 65%,
+        rgba(201, 162, 39, 0.18)
+    );
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.35),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.30),
+        0 2px 5px rgba(0, 0, 0, 0.30);
+    color: #f7f4f6;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.whatsapp-status-ad-text {
+    display: inline-block;
+    white-space: nowrap;
+    transition: opacity 0.25s ease;
+}
+
+.whatsapp-status-ad-text.ad-changing {
+    opacity: 0;
+}
+
+
+/* WHATSAPP STATUS GRID LAYOUT */
+
+.whatsapp-status-content {
+    display: block;
+    width: 100%;
+}
+
+.whatsapp-status-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 140px);
+    grid-auto-rows: 140px;
+    gap: 10px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+
+/* WHATSAPP STATUS CARD */
+
+.whatsapp-status-card {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    min-width: 140px;
+    overflow: hidden;
+    border: 2px solid rgba(245, 248, 252, 0.85);
+    border-radius: 8px;
+    box-shadow:
+        0 2px 6px rgba(45, 55, 72, 0.16),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+    box-sizing: border-box;
+}
+
+.whatsapp-status-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.whatsapp-status-card-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 8px;
+    box-sizing: border-box;
+    background: linear-gradient(
+        transparent 55%,
+        rgba(0, 0, 0, 0.65)
+    );
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+
+/* IMAGE AND VIDEO ALTERNATION */
+
+.whatsapp-status-card img,
+.whatsapp-status-card video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.whatsapp-status-card video {
+    opacity: 0;
+}
+
+.whatsapp-status-card video.status-active {
+    opacity: 1;
+}
+
+.whatsapp-status-card img.status-hidden {
+    opacity: 0;
+}
+
+
+
+/* SUBTLE CENTERED STATUS MESSAGE */
+
+.whatsapp-status-message {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px;
+    box-sizing: border-box;
+
+    color: rgba(247, 250, 213, 0.65);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+
+    pointer-events: none;
+}
+
+/* HIDE WHATSAPP STATUS SCROLLBAR */
+
+.whatsapp-status-grid {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.whatsapp-status-grid::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+
 
 
 /* =========================================================
