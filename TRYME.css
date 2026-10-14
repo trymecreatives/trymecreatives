@@ -2851,6 +2851,46 @@ body {
     min-width: 0;
 }
 
+   /* =========================================================
+   WHATSAPP — MEDIUM
+   701px TO 1000px
+   ========================================================= */
+
+.whatsapp-status-heading-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8px;
+    gap: 0;
+}
+
+.whatsapp-status-section h2 {
+    flex: 0 0 auto;
+    margin: 0;
+
+    white-space: nowrap;
+}
+
+.whatsapp-status-ad {
+    flex: 1 1 auto;
+    min-width: 0;
+
+    height: clamp(28px, 4vw, 38px);
+
+    margin-top: 2px;
+    margin-left: clamp(8px, 2vw, 20px);
+    margin-right: 0;
+
+    padding: 0 6px;
+
+    box-sizing: border-box;
+}
+
+.whatsapp-status-ad-text {
+    white-space: nowrap;
+    text-align: center;
+}
+
 
 
    
@@ -3786,6 +3826,107 @@ body {
     }
 
 
+     .whatsapp-status-section {
+
+        margin-top: 12px;
+
+        padding-top: 12px;
+
+    }
+
+
+
+    .whatsapp-status-heading-row {
+
+        display: flex;
+
+        align-items: center;
+
+        width: 100%;
+
+        gap: 0;
+
+        margin-bottom: 8px;
+
+    }
+
+
+
+    .whatsapp-status-section h2 {
+
+        flex: 0 0 auto;
+
+        margin: 0;
+
+        font-size: clamp(9px, 2.7vw, 12px);
+
+        letter-spacing: 0.5px;
+
+        white-space: nowrap;
+
+    }
+
+
+
+    .whatsapp-status-ad {
+
+        flex: 1 1 auto;
+
+        min-width: 0;
+
+        height:
+
+            clamp(20px, 5.5vw, 25px);
+
+        margin-top: -12px;
+
+        margin-left:
+
+            clamp(5px, 2vw, 12px);
+
+        margin-right: 0;
+
+        padding: 0 3px;
+
+        font-size:
+
+            clamp(5px, 1.6vw, 7px);
+
+        white-space: nowrap;
+
+        overflow: visible;
+
+        text-overflow: clip;
+
+    }
+
+
+
+    .whatsapp-status-ad::before {
+
+        display: none;
+
+    }
+
+
+
+    .whatsapp-status-ad-text {
+
+        white-space: nowrap;
+
+    }
+
+      
+
+.whatsapp-status-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.5fr);
+    gap: 4px;
+    width: 100%;
+    align-items: start;
+}
+
+
 
 
 }
@@ -4121,6 +4262,66 @@ body {
         margin-bottom: 3px;
         font-size: 11px;
     }
+
+
+     /* =========================================================
+   WHATSAPP — VERY SMALL PHONES
+   380px AND BELOW
+   ========================================================= */
+
+.whatsapp-status-heading-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 22px;
+    margin-bottom: 8px;
+    gap: 0;
+}
+
+.whatsapp-status-section h2 {
+    flex: 0 0 auto;
+    margin: 0;
+
+    font-size: 9px;
+    letter-spacing: 0.5px;
+
+    white-space: nowrap;
+}
+
+.whatsapp-status-ad {
+    flex: 1 1 auto;
+    min-width: 0;
+
+    height: 20px;
+
+    margin-top: 2px;
+    margin-left: 5px;
+    margin-right: 0;
+
+    padding: 0 3px;
+
+    box-sizing: border-box;
+
+    font-size: 5px;
+
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+}
+
+.whatsapp-status-ad-text {
+    white-space: nowrap;
+    text-align: center;
+}
+
+
+.whatsapp-status-content {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+    gap: 4px;
+    width: 100%;
+    align-items: start;
+}
 
 }
 
