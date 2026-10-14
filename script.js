@@ -197,6 +197,52 @@ if (contactAdText) {
     }, 3000);
 }
 
+
+/* =========================================================
+   MY PLAYLIST AD
+   ROTATING ADVERTISING TEXT
+   ========================================================= */
+
+const playlistAdText =
+    document.querySelector(".playlist-ad-text");
+
+if (playlistAdText) {
+
+    const playlistMessages = [
+        " ADVERTISE ON THIS SPACE ",
+        " FOR LOW PRICES ",
+        " 1 MONTH CONTRACT "
+    ];
+
+    let playlistCurrentMessage = 0;
+
+    setInterval(function () {
+
+        playlistAdText.classList.add(
+            "ad-changing"
+        );
+
+        setTimeout(function () {
+
+            playlistCurrentMessage =
+                (playlistCurrentMessage + 1) %
+                playlistMessages.length;
+
+            playlistAdText.textContent =
+                playlistMessages[
+                    playlistCurrentMessage
+                ];
+
+            playlistAdText.classList.remove(
+                "ad-changing"
+            );
+
+        }, 250);
+
+    }, 3000);
+
+}
+
 /* =========================================================
    MY CONTACT LIST
    AUTOMATIC IMAGE CROSSFADE
@@ -956,6 +1002,52 @@ setTimeout(
         });
     });
 })();
+
+
+
+/* WHATSAPP STATUS AUTOMATIC IMAGE / VIDEO SWITCHING */
+
+document.querySelectorAll(".whatsapp-status-card").forEach(card => {
+    const image = card.querySelector(".whatsapp-status-image");
+    const video = card.querySelector(".whatsapp-status-video");
+
+    if (!image || !video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.volume = 0;
+    video.playsInline = true;
+
+    function playStatusVideo() {
+        image.classList.add("status-hidden");
+        video.classList.add("status-active");
+
+        video.currentTime = 0;
+
+        video.play().catch(() => {
+            video.classList.remove("status-active");
+            image.classList.remove("status-hidden");
+        });
+    }
+
+    function showStatusImage() {
+        video.pause();
+        video.classList.remove("status-active");
+        image.classList.remove("status-hidden");
+    }
+
+    // Show image first, then automatically play video.
+    setTimeout(playStatusVideo, 4000);
+
+    // Return to image when video finishes.
+    video.addEventListener("ended", () => {
+        showStatusImage();
+
+        // Show image for 4 seconds, then play video again.
+        setTimeout(playStatusVideo, 4000);
+    });
+});
+
 
 
 
