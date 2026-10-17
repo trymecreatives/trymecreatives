@@ -768,6 +768,8 @@ body {
 
         0 0 3px rgba(201, 162, 39, 0.75);
 
+        touch-action: pan-x pan-y;
+
 }
 
 
@@ -1246,6 +1248,7 @@ body {
     scroll-snap-type: x proximity;
 
     touch-action: pan-x pan-y;
+
 }
 
 
@@ -3528,7 +3531,7 @@ body {
 
         scroll-snap-type: x proximity;
 
-        touch-action: pan-x pan-y ;
+        touch-action: pan-x;
 
     }
 
