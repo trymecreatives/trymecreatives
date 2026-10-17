@@ -4330,6 +4330,16 @@ body {
 }
 
 
+/* Hide the scrollbar under My Contact List */
+.contact-grid {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.contact-grid::-webkit-scrollbar {
+    display: none;
+}
+
 
 
 
