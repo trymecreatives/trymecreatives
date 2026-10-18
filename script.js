@@ -1053,18 +1053,24 @@ document.querySelectorAll(".whatsapp-status-card").forEach(card => {
 
 
 
+
 /* =========================================
    TRYME CREATIVES — SUPABASE PLAYLIST LIKES
    ========================================= */
 
 (function () {
-    const buttons = document.querySelectorAll(
+    const button = document.querySelector(
         ".playlist-like-button"
     );
 
-    if (!buttons.length) return;
+    if (!button) return;
 
-    // Keep one anonymous visitor ID in this browser.
+    const heart = button.querySelector(".playlist-heart");
+    const count = button.querySelector(".playlist-like-count");
+
+    if (!heart || !count) return;
+
+    // Give this visitor a persistent ID in this browser.
     let voterId = localStorage.getItem(
         "tryme_playlist_voter_id"
     );
@@ -1083,115 +1089,132 @@ document.querySelectorAll(".whatsapp-status-card").forEach(card => {
         "Authorization": "Bearer " + SUPABASE_KEY
     };
 
-    // Find which playlist is currently selected.
-    function getCurrentPlaylistId() {
-        const activeCard = document.querySelector(
-            ".playlist-item.playlist-active"
-        );
+    let currentPlaylistId = 1;
+    let requestNumber = 0;
 
-        if (!activeCard) return 1;
-
-        return Number(
-            activeCard.getAttribute("data-playlist")
-        ) || 1;
+    function showLikedState(liked) {
+        button.classList.toggle("liked", liked);
+        button.setAttribute("aria-pressed", String(liked));
+        heart.textContent = liked ? "♥" : "♡";
     }
 
-    async function loadCount(playlistId, button) {
-        const count = button.querySelector(
-            ".playlist-like-count"
-        );
+    async function loadPlaylist(playlistId) {
+        const thisRequest = ++requestNumber;
+        currentPlaylistId = Number(playlistId) || 1;
+
+        // Reset the heart while the selected playlist loads.
+        showLikedState(false);
+        count.textContent = "…";
 
         try {
-            const response = await fetch(
+            const countResponse = await fetch(
                 SUPABASE_URL +
                 "/rest/v1/playlist_likes?playlist_id=eq." +
-                playlistId +
+                currentPlaylistId +
                 "&select=like_count",
                 { headers }
             );
 
-            if (!response.ok) {
-                throw new Error("Could not load likes");
+            if (!countResponse.ok) {
+                throw new Error("Could not load playlist count");
             }
 
-            const rows = await response.json();
+            const countRows = await countResponse.json();
 
-            if (rows.length && count) {
-                count.textContent = rows[0].like_count;
+            const likedResponse = await fetch(
+                SUPABASE_URL +
+                "/rest/v1/rpc/has_playlist_liked",
+                {
+                    method: "POST",
+                    headers,
+                    body: JSON.stringify({
+                        p_playlist_id: currentPlaylistId,
+                        p_voter_id: voterId
+                    })
+                }
+            );
+
+            if (!likedResponse.ok) {
+                throw new Error("Could not check liked status");
             }
+
+            const liked = await likedResponse.json();
+
+            // Ignore old responses if another playlist was selected.
+            if (thisRequest !== requestNumber) return;
+
+            count.textContent = countRows.length
+                ? countRows[0].like_count
+                : "0";
+
+            showLikedState(liked === true);
+
         } catch (error) {
+            if (thisRequest !== requestNumber) return;
+
             console.error("Playlist likes:", error);
+            count.textContent = "—";
         }
     }
 
-    buttons.forEach(function (button) {
-        const heart = button.querySelector(
-            ".playlist-heart"
-        );
-        const count = button.querySelector(
-            ".playlist-like-count"
-        );
+    // Clicking the heart likes or unlikes the selected playlist.
+    button.addEventListener("click", async function () {
+        const playlistId = currentPlaylistId;
+        const newLikedState =
+            button.getAttribute("aria-pressed") !== "true";
 
-        if (!heart || !count) return;
+        button.disabled = true;
 
-        // Load the initial count for the selected playlist.
-        loadCount(getCurrentPlaylistId(), button);
-
-        button.addEventListener("click", async function () {
-            const playlistId = getCurrentPlaylistId();
-            const liked = button.classList.contains("liked");
-            const newLikedState = !liked;
-
-            button.disabled = true;
-
-            try {
-                const response = await fetch(
-                    SUPABASE_URL +
-                    "/rest/v1/rpc/toggle_playlist_like",
-                    {
-                        method: "POST",
-                        headers,
-                        body: JSON.stringify({
-                            p_playlist_id: playlistId,
-                            p_voter_id: voterId,
-                            p_like: newLikedState
-                        })
-                    }
-                );
-
-                if (!response.ok) {
-                    throw new Error(
-                        "Could not save your like"
-                    );
+        try {
+            const response = await fetch(
+                SUPABASE_URL +
+                "/rest/v1/rpc/toggle_playlist_like",
+                {
+                    method: "POST",
+                    headers,
+                    body: JSON.stringify({
+                        p_playlist_id: playlistId,
+                        p_voter_id: voterId,
+                        p_like: newLikedState
+                    })
                 }
+            );
 
-                const newCount = await response.json();
-
-                button.classList.toggle(
-                    "liked",
-                    newLikedState
-                );
-
-                button.setAttribute(
-                    "aria-pressed",
-                    String(newLikedState)
-                );
-
-                heart.textContent =
-                    newLikedState ? "♥" : "♡";
-
-                count.textContent = newCount;
-
-            } catch (error) {
-                console.error("Playlist like error:", error);
-                alert(
-                    "Your like could not be saved. Please try again."
-                );
-            } finally {
-                button.disabled = false;
+            if (!response.ok) {
+                throw new Error("Could not save your like");
             }
-        });
+
+            const newCount = await response.json();
+
+            // Only update the button if this playlist is still selected.
+            if (playlistId === currentPlaylistId) {
+                count.textContent = newCount;
+                showLikedState(newLikedState);
+            }
+
+        } catch (error) {
+            console.error("Playlist like error:", error);
+            alert(
+                "Your like could not be saved. Please try again."
+            );
+        } finally {
+            button.disabled = false;
+        }
     });
+
+    // Keep the heart and count in sync with playlist selection.
+    document.querySelectorAll(".playlist-item").forEach(
+        function (item) {
+            item.addEventListener("click", function () {
+                loadPlaylist(
+                    item.getAttribute("data-playlist")
+                );
+            });
+        }
+    );
+
+    // Load Playlist 1 when the page first opens.
+    loadPlaylist(1);
 })();
 
 
