@@ -1052,3 +1052,23 @@ document.querySelectorAll(".whatsapp-status-card").forEach(card => {
 
 
 
+/* PLAYLIST LIKE BUTTON */
+
+document.querySelectorAll(".playlist-like-button").forEach(function (button) {
+    button.addEventListener("click", function () {
+        const heart = button.querySelector(".playlist-heart");
+        const count = button.querySelector(".playlist-like-count");
+        const liked = button.classList.toggle("liked");
+
+        button.setAttribute("aria-pressed", String(liked));
+        heart.textContent = liked ? "♥" : "♡";
+        count.textContent = liked ? "1" : "0";
+    });
+});
+
+
+
+
+
+
+
