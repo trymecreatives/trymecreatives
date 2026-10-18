@@ -1052,19 +1052,158 @@ document.querySelectorAll(".whatsapp-status-card").forEach(card => {
 
 
 
-/* PLAYLIST LIKE BUTTON */
 
-document.querySelectorAll(".playlist-like-button").forEach(function (button) {
-    button.addEventListener("click", function () {
-        const heart = button.querySelector(".playlist-heart");
-        const count = button.querySelector(".playlist-like-count");
-        const liked = button.classList.toggle("liked");
+/* =========================================
+   TRYME CREATIVES — SUPABASE PLAYLIST LIKES
+   ========================================= */
 
-        button.setAttribute("aria-pressed", String(liked));
-        heart.textContent = liked ? "♥" : "♡";
-        count.textContent = liked ? "1" : "0";
+(function () {
+    const buttons = document.querySelectorAll(
+        ".playlist-like-button"
+    );
+
+    if (!buttons.length) return;
+
+    // Keep one anonymous visitor ID in this browser.
+    let voterId = localStorage.getItem(
+        "tryme_playlist_voter_id"
+    );
+
+    if (!voterId) {
+        voterId = crypto.randomUUID();
+        localStorage.setItem(
+            "tryme_playlist_voter_id",
+            voterId
+        );
+    }
+
+    const headers = {
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_KEY,
+        "Authorization": "Bearer " + SUPABASE_KEY
+    };
+
+    // Find which playlist is currently selected.
+    function getCurrentPlaylistId() {
+        const activeCard = document.querySelector(
+            ".playlist-item.playlist-active"
+        );
+
+        if (!activeCard) return 1;
+
+        return Number(
+            activeCard.getAttribute("data-playlist")
+        ) || 1;
+    }
+
+    async function loadCount(playlistId, button) {
+        const count = button.querySelector(
+            ".playlist-like-count"
+        );
+
+        try {
+            const response = await fetch(
+                SUPABASE_URL +
+                "/rest/v1/playlist_likes?playlist_id=eq." +
+                playlistId +
+                "&select=like_count",
+                { headers }
+            );
+
+            if (!response.ok) {
+                throw new Error("Could not load likes");
+            }
+
+            const rows = await response.json();
+
+            if (rows.length && count) {
+                count.textContent = rows[0].like_count;
+            }
+        } catch (error) {
+            console.error("Playlist likes:", error);
+        }
+    }
+
+    buttons.forEach(function (button) {
+        const heart = button.querySelector(
+            ".playlist-heart"
+        );
+        const count = button.querySelector(
+            ".playlist-like-count"
+        );
+
+        if (!heart || !count) return;
+
+        // Load the initial count for the selected playlist.
+        loadCount(getCurrentPlaylistId(), button);
+
+        button.addEventListener("click", async function () {
+            const playlistId = getCurrentPlaylistId();
+            const liked = button.classList.contains("liked");
+            const newLikedState = !liked;
+
+            button.disabled = true;
+
+            try {
+                const response = await fetch(
+                    SUPABASE_URL +
+                    "/rest/v1/rpc/toggle_playlist_like",
+                    {
+                        method: "POST",
+                        headers,
+                        body: JSON.stringify({
+                            p_playlist_id: playlistId,
+                            p_voter_id: voterId,
+                            p_like: newLikedState
+                        })
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error(
+                        "Could not save your like"
+                    );
+                }
+
+                const newCount = await response.json();
+
+                button.classList.toggle(
+                    "liked",
+                    newLikedState
+                );
+
+                button.setAttribute(
+                    "aria-pressed",
+                    String(newLikedState)
+                );
+
+                heart.textContent =
+                    newLikedState ? "♥" : "♡";
+
+                count.textContent = newCount;
+
+            } catch (error) {
+                console.error("Playlist like error:", error);
+                alert(
+                    "Your like could not be saved. Please try again."
+                );
+            } finally {
+                button.disabled = false;
+            }
+        });
     });
-});
+})();
+
+
+
+/* =========================================
+   SUPABASE CONNECTION
+   TRYME CREATIVES PLAYLIST LIKES not dont post this section to chatgpt
+   ========================================= */
+
+const SUPABASE_URL = "https://kxpakoczmzaryebfygfq.supabase.co";
+const SUPABASE_KEY = "sb_publishable_hg5dj-tO1IbtfTIC4c-ALA_ihLAYzvU";
+
 
 
 
