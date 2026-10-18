@@ -398,7 +398,7 @@ if (playlistItems.length > 0 && playlistInfo) {
         },
 
         3: {
-            title: "Write Maan Contact List",
+            title: "His Bestfriend",
             songs: "20",
             age: "25+",
             by: "Ar",
@@ -407,12 +407,12 @@ if (playlistItems.length > 0 && playlistInfo) {
         },
 
         4: {
-            title: "Playlist 4",
-            songs: "15",
+            title: "Mama Mboga",
+            songs: "20",
             age: "21+",
             by: "BS",
-            image: "YOUR-PLAYLIST-COVER-84.jpg",
-            youtube: "YOUR-YOUTUBE-LINK-12"
+            image: "6.png",
+            youtube: "https://www.youtube.com/watch?v=LYrng49zCMo&list=PLQS0ckXuEhuQ"
         },
 
         5: {
@@ -425,12 +425,12 @@ if (playlistItems.length > 0 && playlistInfo) {
         },
 
         6: {
-            title: "Mzee Tali",
+            title: "Mzee Mkali",
             songs: "14",
-            age: "18+",
+            age: "40+",
             by: "Choma Lie",
-            image: "YOUR-PLAYLIST-COVER-6.jpg",
-            youtube: "YOUR-YOUTUBE-LINK-6"
+            image: "2.png",
+            youtube: "https://www.youtube.com/watch?v=BfkxdKYfNfg&list=PLHAeo1tIyuM8"
         },
 
         7: {
