@@ -1051,6 +1051,15 @@ document.querySelectorAll(".whatsapp-status-card").forEach(card => {
 
 
 
+/* =========================================
+   SUPABASE CONNECTION
+   TRYME CREATIVES PLAYLIST LIKES not dont post this section to chatgpt
+   ========================================= */
+
+const SUPABASE_URL = "https://kxpakoczmzaryebfygfq.supabase.co";
+const SUPABASE_KEY = "sb_publishable_hg5dj-tO1IbtfTIC4c-ALA_ihLAYzvU";
+
+
 
 
 
@@ -1219,13 +1228,6 @@ document.querySelectorAll(".whatsapp-status-card").forEach(card => {
 
 
 
-/* =========================================
-   SUPABASE CONNECTION
-   TRYME CREATIVES PLAYLIST LIKES not dont post this section to chatgpt
-   ========================================= */
-
-const SUPABASE_URL = "https://kxpakoczmzaryebfygfq.supabase.co";
-const SUPABASE_KEY = "sb_publishable_hg5dj-tO1IbtfTIC4c-ALA_ihLAYzvU";
 
 
 
