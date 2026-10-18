@@ -2344,6 +2344,48 @@ body {
     line-height: 1;
 }
 
+
+/* PLAYLIST LISTEN + LIKE BUTTONS */
+
+.playlist-listen-buttons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.playlist-like-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex: 0 0 auto;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 5px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: #198754;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.playlist-heart {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.playlist-like-button.liked {
+    color: #ffb3c1;
+}
+
+.playlist-like-button:hover {
+    opacity: 0.85;
+}
+
 /* =========================================================
    PLAYLIST BOUNDARY
    ========================================================= */
@@ -2852,6 +2894,12 @@ body {
     width: 100%;
     min-width: 0;
 }
+
+
+    .playlist-listen-buttons {
+        gap: 6px;
+    }
+
 
    /* =========================================================
    WHATSAPP — MEDIUM
@@ -3827,6 +3875,15 @@ body {
         font-size: 10px;
     }
 
+    .playlist-listen-buttons {
+        gap: 5px;
+    }
+
+    .playlist-listen-btn,
+    .playlist-like-button {
+        height: 32px;
+    }
+
 
      .whatsapp-status-section {
 
@@ -4267,6 +4324,26 @@ body {
         font-size: 11px;
     }
 
+     .playlist-listen-buttons {
+        gap: 3px;
+    }
+
+    .playlist-listen-btn {
+        width: 32px;
+        height: 30px;
+    }
+
+    .playlist-like-button {
+        min-width: 30px;
+        height: 30px;
+        padding: 0 3px;
+        font-size: 11px;
+    }
+
+    .playlist-heart {
+        font-size: 18px;
+    }
+
 
      /* =========================================================
    WHATSAPP — VERY SMALL PHONES
@@ -4342,5 +4419,42 @@ body {
 
 
 
+
+/* PLAYLIST INFO LIKE BUTTON */
+
+.playlist-like-area {
+    position: absolute;
+    top: 285px;
+    right: 22px;
+    z-index: 5;
+}
+
+.playlist-like-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 20px;
+    background: transparent;
+    color: #222;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.playlist-like-button .playlist-heart {
+    font-size: 27px;
+    line-height: 1;
+}
+
+.playlist-like-button.liked {
+    color: #ff1744;
+}
+
+.playlist-like-button:hover {
+    transform: scale(1.08);
+}
 
 
