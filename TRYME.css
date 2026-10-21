@@ -2551,7 +2551,8 @@ body {
 
 
 
-/* IMAGE AND VIDEO ALTERNATION */
+
+/* WHATSAPP STATUS IMAGE AND VIDEO ALTERNATION */
 
 .whatsapp-status-card img,
 .whatsapp-status-card video {
@@ -2560,19 +2561,22 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.whatsapp-status-card video {
     opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
+/* Show only the active image or video */
+.whatsapp-status-card img.status-active,
 .whatsapp-status-card video.status-active {
     opacity: 1;
 }
 
-.whatsapp-status-card img.status-hidden {
+/* Keep inactive media hidden */
+.whatsapp-status-card img.status-hidden,
+.whatsapp-status-card video.status-hidden {
     opacity: 0;
 }
+
 
 
 
