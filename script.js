@@ -1232,7 +1232,93 @@ const SUPABASE_KEY = "sb_publishable_hg5dj-tO1IbtfTIC4c-ALA_ihLAYzvU";
 
 
 
+/* =========================================
+   LATEST UPDATES — FULL WIDTH CAROUSEL
+   ========================================= */
 
+(function () {
+    const track = document.querySelector(".updates-track");
+    const carousel = document.querySelector(".updates-carousel");
 
+    if (!track || !carousel) return;
 
+    const cards = Array.from(track.querySelectorAll(".update-card"));
+    if (!cards.length) return;
 
+    let currentIndex = 0;
+    let autoPlayTimer;
+
+    function showCards() {
+        const total = cards.length;
+        const width = carousel.clientWidth;
+        const mobile = window.innerWidth <= 700;
+
+        const cardWidth = mobile ? 140 : 190;
+
+        // Spread the outer cards toward the carousel edges.
+        const maxDistance = Math.floor(total / 2);
+        const edgeSpace = mobile ? 28 : 65;
+        const step = Math.min(
+            cardWidth * 1.05,
+            Math.max(1, (width / 2 - edgeSpace) / maxDistance)
+        );
+
+        cards.forEach(function (card, index) {
+            let distance = index - currentIndex;
+
+            // Keep the cards balanced on both sides.
+            if (distance >= total / 2) distance -= total;
+            if (distance < -total / 2) distance += total;
+
+            const level = Math.abs(distance);
+            const scale = Math.max(0.30, 1 - level * 0.14);
+
+            card.classList.remove("is-center", "is-near", "is-far");
+
+            card.style.width = cardWidth + "px";
+            card.style.left =
+                "calc(50% + " + (distance * step) + "px)";
+            card.style.zIndex = String(20 - level);
+            card.style.opacity = String(Math.max(0.35, 1 - level * 0.13));
+            card.style.transform =
+                "translate(-50%, -50%) scale(" + scale + ")";
+
+            if (distance === 0) {
+                card.classList.add("is-center");
+            } else if (level === 1) {
+                card.classList.add("is-near");
+            } else {
+                card.classList.add("is-far");
+            }
+        });
+    }
+
+    function nextCard() {
+        currentIndex = (currentIndex + 1) % cards.length;
+        showCards();
+    }
+
+    function startAutoPlay() {
+        clearInterval(autoPlayTimer);
+        if (cards.length > 1) {
+            autoPlayTimer = setInterval(nextCard, 4000);
+        }
+    }
+
+    cards.forEach(function (card, index) {
+        card.addEventListener("click", function (event) {
+            if (card.getAttribute("href") === "#") {
+                event.preventDefault();
+            }
+
+            currentIndex = index;
+            showCards();
+            startAutoPlay();
+        });
+    });
+
+    window.addEventListener("resize", showCards);
+
+    showCards();
+    startAutoPlay();
+})();
