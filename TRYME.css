@@ -4835,3 +4835,25 @@ body {
         height: 240px;
     }
 }
+
+
+/* FIX WHATSAPP STATUS ON PHONE SCREENS */
+@media (max-width: 700px) {
+    .whatsapp-status-content {
+        display: block !important;
+        width: 100%;
+        min-width: 0;
+        overflow: visible;
+    }
+
+    .whatsapp-status-grid {
+        display: grid;
+        grid-template-columns: repeat(9, 140px);
+        grid-auto-rows: 140px;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+}
+
