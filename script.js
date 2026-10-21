@@ -1005,48 +1005,66 @@ setTimeout(
 
 
 
+
+
 /* WHATSAPP STATUS AUTOMATIC IMAGE / VIDEO SWITCHING */
 
-document.querySelectorAll(".whatsapp-status-card").forEach(card => {
-    const image = card.querySelector(".whatsapp-status-image");
-    const video = card.querySelector(".whatsapp-status-video");
+document.querySelectorAll(".whatsapp-status-card").forEach(function (card) {
+    const media = Array.from(
+        card.querySelectorAll(".whatsapp-status-image, .whatsapp-status-video")
+    );
 
-    if (!image || !video) return;
+    if (media.length === 0) return;
 
-    video.muted = true;
-    video.defaultMuted = true;
-    video.volume = 0;
-    video.playsInline = true;
+    let currentIndex = 0;
+    let switchTimer;
 
-    function playStatusVideo() {
-        image.classList.add("status-hidden");
-        video.classList.add("status-active");
+    function nextMedia() {
+        showMedia((currentIndex + 1) % media.length);
+    }
 
-        video.currentTime = 0;
+    function showMedia(index) {
+        clearTimeout(switchTimer);
 
-        video.play().catch(() => {
-            video.classList.remove("status-active");
-            image.classList.remove("status-hidden");
+        media.forEach(function (item) {
+            item.classList.remove("status-active", "status-hidden");
+
+            if (item.tagName === "VIDEO") {
+                item.pause();
+                item.onended = null;
+                item.currentTime = 0;
+            }
         });
+
+        currentIndex = index;
+        const current = media[currentIndex];
+
+        current.classList.add("status-active");
+
+        if (current.tagName === "VIDEO") {
+            current.muted = true;
+            current.playsInline = true;
+            current.onended = nextMedia;
+
+            current.play().then(function () {
+                // Fallback if the video does not fire its ended event.
+                if (Number.isFinite(current.duration) && current.duration > 0) {
+                    switchTimer = setTimeout(
+                        nextMedia,
+                        current.duration * 1000 + 500
+                    );
+                }
+            }).catch(function () {
+                switchTimer = setTimeout(nextMedia, 4000);
+            });
+        } else {
+            switchTimer = setTimeout(nextMedia, 4000);
+        }
     }
 
-    function showStatusImage() {
-        video.pause();
-        video.classList.remove("status-active");
-        image.classList.remove("status-hidden");
-    }
-
-    // Show image first, then automatically play video.
-    setTimeout(playStatusVideo, 4000);
-
-    // Return to image when video finishes.
-    video.addEventListener("ended", () => {
-        showStatusImage();
-
-        // Show image for 4 seconds, then play video again.
-        setTimeout(playStatusVideo, 4000);
-    });
+    showMedia(0);
 });
+
 
 
 
