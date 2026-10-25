@@ -199,7 +199,7 @@ function refreshLowerPictureGalleries() {
       name: "Fatoon",
       price: "500/=",
       size: "XXL",
-      features: "Comfortable everyday wear with a stylish finish.",
+      features: "Comfortable everyday wear.",
       units: "14"
     },
     {
