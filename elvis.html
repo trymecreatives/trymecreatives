@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Elvis | TRYME CREATIVES</title>
+    <link rel="stylesheet" href="elvis.css">
+    <script src="elvis.js" defer></script>
+</head>
+<body>
+
+<header class="elvis-header">
+
+    <!-- TOP NAVIGATION -->
+    <div class="top-bar">
+        <a href="index.html" class="back-arrow" aria-label="Back">⬅</a>
+        <span class="elvis-name">Elvis</span>
+
+        <div class="social-icons">
+            <a href="https://wa.me/" aria-label="WhatsApp">
+                <img src="Whatsapp Icon-01.png" alt="WhatsApp">
+            </a>
+
+            <a href="https://facebook.com/" aria-label="Facebook">
+                <img src="Facebook Icon-01.png" alt="Facebook">
+            </a>
+
+            <a href="https://instagram.com/" aria-label="Instagram">
+                <img src="Instagram Icons-01.png" alt="Instagram">
+            </a>
+
+            <button id="menuButton" class="menu-button"
+                    aria-label="Open menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <nav id="headerMenu" class="dropdown-menu">
+            <a href="index.html">Home</a>
+            <a href="#productDetails">Product information</a>
+            <a href="#productPhoto">Selected photo</a>
+        </nav>
+    </div>
+
+    <!-- MAIN HEADER CONTENT -->
+    <div class="header-content">
+
+        <!-- LEFT: PRODUCT INFORMATION -->
+        <section class="product-card" id="productDetails">
+            <div class="product-info">
+                <p><strong>Name:</strong> <span id="productName">Fatoon</span></p>
+                <p><strong>Price:</strong> <span id="productPrice">150/=</span></p>
+                <p><strong>Size:</strong> <span id="productSize">XXL</span></p>
+                <p><strong>Key Feature:</strong></p>
+                <p id="productFeatures">Add product features here</p>
+                <p><strong>Units Left:</strong> <span id="productUnits">14</span></p>
+            </div>
+
+            <button class="selected-photo" id="productPhoto"
+                    aria-label="View selected photo">
+                <img id="mainPhoto" src="product1.jpg" alt="Selected product">
+            </button>
+        </section>
+
+        <!-- RIGHT: TOP SLIDESHOW AND CONTACT -->
+        <aside class="right-sidebar">
+
+            <div class="featured-pictures" id="featuredSlider">
+                <div class="featured-track">
+                    <div class="featured-slide">
+                        <img src="Elvis Roysambu 6.jpg" alt="Featured picture 1">
+                    </div>
+
+                    <div class="featured-slide">
+                        <img src="Elvis Roysambu 8.jpg" alt="Featured picture 2">
+                    </div>
+
+                    <div class="featured-slide">
+                        <img src="Elvis Roysambu 9.jpg" alt="Featured picture 3">
+                    </div>
+
+                    <div class="featured-slide">
+                        <img src="Elvis Roysambu 10.jpg" alt="Featured picture 4">
+                    </div>
+                </div>
+            </div>
+
+            <p class="contact-label">Contact: 07*******</p>
+
+        </aside>
+
+    </div>
+
+</header>
+
+
+<!-- RIGHT: SEPARATE LOWER SCROLLABLE CARDS -->
+        
+<aside class="lower-right-sidebar" aria-label="More pictures">
+    <div class="lower-picture-list">
+
+        <!-- CARD 1 -->
+        <div class="lower-picture">
+            <div class="fade-gallery">
+                <img src="Elvis Roysambu 1.jpg" alt="Featured picture 1" loading="lazy">
+                <img src="Elvis Roysambu 2.jpg" alt="Featured picture 2" loading="lazy">
+            </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="lower-picture">
+            <div class="fade-gallery">
+                <img src="feature7.jpg" alt="Featured picture 3" loading="lazy">
+                <img src="feature8.jpg" alt="Featured picture 4" loading="lazy">
+            </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="lower-picture">
+            <div class="fade-gallery">
+                <img src="feature9.jpg" alt="Featured picture 5" loading="lazy">
+                <img src="feature10.jpg" alt="Featured picture 6" loading="lazy">
+            </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="lower-picture">
+            <div class="fade-gallery">
+                <img src="feature11.jpg" alt="Featured picture 7" loading="lazy">
+                <img src="feature12.jpg" alt="Featured picture 8" loading="lazy">
+            </div>
+        </div>
+
+
+        <!-- CARD 5 -->
+        <div class="lower-picture">
+            <div class="fade-gallery">
+                <img src="feature13.jpg" alt="Featured picture 9" loading="lazy">
+                <img src="feature14.jpg" alt="Featured picture 10" loading="lazy">
+            </div>
+        </div>
+
+
+
+        <!-- CARD 6 -->
+        <div class="lower-picture">
+            <div class="fade-gallery">
+                <img src="feature15.jpg" alt="Featured picture 11" loading="lazy">
+                <img src="feature16.jpg" alt="Featured picture 12" loading="lazy">
+            </div>
+        </div>
+
+
+
+        <!-- CARD 7 -->
+        <div class="lower-picture">
+            <div class="fade-gallery">
+                <img src="feature17.jpg" alt="Featured picture 13" loading="lazy">
+                <img src="feature18.jpg" alt="Featured picture 14" loading="lazy">
+            </div>
+        </div>
+
+
+        <!-- CARD 8 -->
+        <div class="lower-picture">
+            <div class="fade-gallery">
+                <img src="feature19.jpg" alt="Featured picture 15" loading="lazy">
+                <img src="feature20.jpg" alt="Featured picture 16" loading="lazy">
+            </div>
+        </div>
+
+
+
+    </div>
+</aside>
+
+
+
+
+<!-- FUTURE PAGE CONTENT GOES HERE -->
+
+<main class="page-content">
+
+ 
+
+    <div class="product-grid">
+
+        <div class="product-item">
+            <img src="Elvis Roysambu 2.jpg" alt="Product 1">
+            <span class="product-price">Price here</span>
+        </div>
+
+        <div class="product-item">
+            <img src="Elvis Roysambu 3.jpg" alt="Product 2">
+        </div>
+
+        <div class="product-item">
+            <img src="Elvis Roysambu 4.jpg" alt="Product 3">
+        </div>
+
+        <div class="product-item">
+            <img src="product4.jpg" alt="Product 4">
+        </div>
+
+        <div class="product-item">
+            <img src="product5.jpg" alt="Product 5">
+        </div>
+
+        <div class="product-item">
+            <img src="product6.jpg" alt="Product 6">
+        </div>
+
+        <div class="product-item">
+            <img src="product7.jpg" alt="Product 7">
+        </div>
+
+        <div class="product-item">
+            <img src="product8.jpg" alt="Product 8">
+        </div>
+
+        <div class="product-item">
+            <img src="product9.jpg" alt="Product 9">
+        </div>
+
+        <div class="product-item">
+            <img src="product10.jpg" alt="Product 10">
+        </div>
+
+    </div>
+
+</main>
+
+
+</body>
+</html>
