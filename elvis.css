@@ -39,7 +39,7 @@ body {
 ===================================== */
 
 .top-bar {
-    position: relative;
+    position: sticky;
     display: flex;
     align-items: center;
     gap: 10px;
