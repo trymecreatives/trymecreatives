@@ -433,3 +433,147 @@ function refreshLowerPictureGalleries() {
         }, 1800);
     });
 })();
+
+
+/* =========================================
+   ELVIS PAGE LIKES — SUPABASE
+   ========================================= */
+
+(function () {
+    const button = document.getElementById("likeButton");
+    const count = document.getElementById("likeCount");
+    const label = document.getElementById("likeLabel");
+
+    if (!button || !count || !label) return;
+
+    const heart = button.querySelector(".like-symbol");
+
+    const SUPABASE_URL =
+        "https://kxpakoczmzaryebfygfq.supabase.co";
+
+    const SUPABASE_KEY =
+        "sb_publishable_hg5dj-tO1IbtfTIC4c-ALA_ihLAYzvU";
+
+    let visitorId = localStorage.getItem("tryme_elvis_voter_id");
+
+    if (!visitorId) {
+        visitorId = crypto.randomUUID();
+        localStorage.setItem("tryme_elvis_voter_id", visitorId);
+    }
+
+    const headers = {
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_KEY,
+        "Authorization": "Bearer " + SUPABASE_KEY
+    };
+
+    let liked = false;
+
+    function showLikedState(value) {
+        liked = value;
+        button.classList.toggle("liked", liked);
+        button.setAttribute("aria-pressed", String(liked));
+        label.textContent = liked ? "Liked" : "Like";
+
+        if (heart) {
+            heart.textContent = liked ? "♥" : "♡";
+        }
+    }
+
+    async function loadElvisLikes() {
+        count.textContent = "…";
+
+        try {
+            const results = await Promise.all([
+                fetch(
+                    SUPABASE_URL +
+                    "/rest/v1/elvis_likes?select=id",
+                    { headers }
+                ),
+                fetch(
+                    SUPABASE_URL +
+                    "/rest/v1/rpc/has_elvis_liked",
+                    {
+                        method: "POST",
+                        headers,
+                        body: JSON.stringify({
+                            p_visitor_id: visitorId
+                        })
+                    }
+                )
+            ]);
+
+            if (!results[0].ok || !results[1].ok) {
+                throw new Error("Could not load Elvis likes");
+            }
+
+            const rows = await results[0].json();
+            const visitorLiked = await results[1].json();
+
+            count.textContent = rows.length;
+            showLikedState(visitorLiked === true);
+        } catch (error) {
+            console.error("Elvis likes:", error);
+            count.textContent = "—";
+        }
+    }
+
+    button.addEventListener("click", async function () {
+        const newLikedState = !liked;
+
+        button.disabled = true;
+
+        try {
+            const response = await fetch(
+                SUPABASE_URL + "/rest/v1/rpc/set_elvis_like",
+                {
+                    method: "POST",
+                    headers,
+                    body: JSON.stringify({
+                        p_visitor_id: visitorId,
+                        p_liked: newLikedState
+                    })
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(await response.text());
+            }
+
+            const newCount = await response.json();
+
+            count.textContent = newCount;
+            showLikedState(newLikedState);
+        } catch (error) {
+            console.error("Elvis like error:", error);
+            alert("Your like could not be saved. Please try again.");
+        } finally {
+            button.disabled = false;
+        }
+    });
+
+    loadElvisLikes();
+})();
+
+/* =========================================
+   COPY ELVIS PAGE LINK
+   ========================================= */
+
+(function () {
+    const button = document.getElementById("copyLinkButton");
+
+    if (!button) return;
+
+    button.addEventListener("click", async function () {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            button.textContent = "Copied!";
+
+            setTimeout(function () {
+                button.textContent = "Copy link";
+            }, 1800);
+        } catch (error) {
+            prompt("Copy this page link:", window.location.href);
+        }
+    });
+})();
