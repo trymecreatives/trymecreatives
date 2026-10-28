@@ -329,3 +329,107 @@ function refreshLowerPictureGalleries() {
   // Select the first product when the page loads.
   selectProduct(cards[0], 0);
 })();
+
+
+
+/* =====================================
+   PAGE LIKE BUTTON
+===================================== */
+
+(() => {
+    const likeButton = document.getElementById("likeButton");
+    const likeCount = document.getElementById("likeCount");
+    const likeLabel = document.getElementById("likeLabel");
+
+    if (!likeButton || !likeCount || !likeLabel) return;
+
+    const likedKey = "elvisPageLiked";
+    const countKey = "elvisPageLikeCount";
+
+    function readNumber(key) {
+        try {
+            const value = Number(localStorage.getItem(key));
+            return Number.isFinite(value) && value >= 0 ? value : 0;
+        } catch {
+            return 0;
+        }
+    }
+
+    function readLiked() {
+        try {
+            return localStorage.getItem(likedKey) === "true";
+        } catch {
+            return false;
+        }
+    }
+
+    let liked = readLiked();
+    let count = readNumber(countKey);
+
+    function renderLike() {
+        likeCount.textContent = count;
+        likeLabel.textContent = liked ? "Liked" : "Like";
+        likeButton.querySelector(".like-symbol").textContent =
+            liked ? "♥" : "♡";
+
+        likeButton.classList.toggle("liked", liked);
+        likeButton.setAttribute("aria-pressed", String(liked));
+    }
+
+    likeButton.addEventListener("click", () => {
+        // Save this browser's like state.
+        const nextLiked = !liked;
+
+        try {
+            localStorage.setItem(likedKey, String(nextLiked));
+            localStorage.setItem(
+                countKey,
+                String(Math.max(0, count + (nextLiked ? 1 : -1)))
+            );
+        } catch {
+            // The button still works for this page session
+            // if browser storage is unavailable.
+        }
+
+        count = Math.max(0, count + (nextLiked ? 1 : -1));
+        liked = nextLiked;
+        renderLike();
+    });
+
+    renderLike();
+})();
+
+
+/* =====================================
+   COPY CURRENT PAGE LINK
+===================================== */
+
+(() => {
+    const copyButton = document.getElementById("copyLinkButton");
+
+    if (!copyButton) return;
+
+    copyButton.addEventListener("click", async () => {
+        const pageUrl = window.location.href;
+        const originalText = "Copy link";
+
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(pageUrl);
+            } else {
+                // Fallback for local files or unsupported browsers.
+                window.prompt("Copy this page link:", pageUrl);
+                return;
+            }
+
+            copyButton.textContent = "Link copied!";
+        } catch {
+            window.prompt("Copy this page link:", pageUrl);
+            return;
+        }
+
+        window.setTimeout(() => {
+            copyButton.textContent = originalText;
+        }, 1800);
+    });
+})();
