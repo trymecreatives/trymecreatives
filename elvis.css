@@ -7,12 +7,20 @@
     box-sizing: border-box;
 }
 
+
 html,
 body {
     margin: 0;
     padding: 0;
     width: 100%;
     min-height: 100%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
 }
 
 body {
@@ -20,7 +28,9 @@ body {
     background: rgb(182, 197, 219);
     color: #000;
     overflow-x: hidden;
+    overflow-y: auto;
 }
+
 
 /* =====================================
    STICKY HEADER
@@ -39,16 +49,115 @@ body {
 ===================================== */
 
 .top-bar {
-    position: sticky;
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     width: 100%;
     min-height: 38px;
     padding: 4px 10px;
     background: rgb(85, 92, 102);
     color: white;
+    isolation: isolate;
 }
+
+
+
+/* =====================================
+   TOP-BAR LIKE AND COPY BUTTONS
+===================================== */
+
+.top-bar {
+    isolation: isolate;
+}
+
+/* Centre the buttons in the top navigation bar */
+.page-actions {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    max-width: calc(100% - 150px);
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.top-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 30px;
+    padding: 5px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 18px;
+    background: #465363;
+    color: #fff;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    cursor: pointer;
+    touch-action: manipulation;
+    user-select: none;
+}
+
+.top-action:hover {
+    background: #354253;
+}
+
+.top-action:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.like-button.liked {
+    background: #8b3447;
+    border-color: #f3b4c0;
+}
+
+.copy-button {
+    margin-left: 2px;
+}
+
+/* Keep the buttons away from the title and icons */
+@media (min-width: 701px) {
+    .elvis-name {
+        flex: 1;
+    }
+}
+
+/* Your existing mobile breakpoint: 381–700px */
+@media (min-width: 381px) and (max-width: 700px) {
+    .page-actions {
+        gap: 10px;
+        max-width: calc(100% - 120px);
+    }
+
+    .top-action {
+        min-height: 28px;
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+}
+
+/* Your existing small-phone breakpoint: 380px and below */
+@media (max-width: 380px) {
+    .page-actions {
+        gap: 5px;
+        max-width: calc(100% - 100px);
+    }
+
+    .top-action {
+        min-height: 26px;
+        gap: 3px;
+        padding: 4px 5px;
+        font-size: 9px;
+    }
+}
+
 
 .back-arrow {
     flex-shrink: 0;
@@ -773,39 +882,13 @@ body {
 ===================================== */
 
 .page-content {
-    /* Keep the first row clear of the sticky header so card tops never sit under it. */
     position: relative;
     z-index: 1;
-    height: calc(100vh - 201px);
+    height: auto;
     min-height: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: visible;
     margin: 0;
-    padding: 1px 0 0;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    overscroll-behavior-y: contain;
-    overscroll-behavior-x: none;
-}
-
-/* Keep the product area aligned to the available screen on phones. */
-@media (min-width: 381px) and (max-width: 700px) {
-    .page-content {
-        height: calc(100vh - 177px);
-        padding-top: 1px;
-    }
-}
-
-@media (max-width: 380px) {
-    .page-content {
-        height: calc(100vh - 177px);
-        padding-top: 1px;
-    }
-}
-
-
-.page-content::-webkit-scrollbar {
-    display: none;
+    padding: 5px 0 12px;
 }
 
 
